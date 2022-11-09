@@ -85,8 +85,9 @@ class data_user extends CI_Controller
 
         // Wajib isi
         $this->form_validation->set_rules('nama', 'Nama Pengguna', 'required');
-        $this->form_validation->set_rules('email', 'Email Pengguna', 'required');
-        $this->form_validation->set_rules('username', 'Username Pengguna', 'required');
+        // dijadikan variabel karena digunakan untuk validasi data ganda
+        $form_email = $this->form_validation->set_rules('email', 'Email Pengguna', 'required');
+        $from_username = $this->form_validation->set_rules('username', 'Username Pengguna', 'required');
         $this->form_validation->set_rules('level', 'Level Pengguna', 'required');
         $this->form_validation->set_rules('status', 'Status Pengguna', 'required');
         if ($this->form_validation->run() != false) {
@@ -100,14 +101,20 @@ class data_user extends CI_Controller
             $cek_data_user2 = $this->db->query("SELECT * FROM `pengguna` WHERE `pengguna_username`= '$username' ")->num_rows();
             $cek_data_user3 = $this->db->query("SELECT * FROM `pengguna` WHERE `pengguna_email` = '$email'")->num_rows();
 
-
+            // mengecek query ambil data
+            // membandingkan dari form
+            // jadikan perbandingan
             if ($cek_data_user > 1) {
                 echo "username / email sama";
+                var_dump($cek_data_user);
             } elseif ($cek_data_user1 > 1) {
                 echo "username dan email sama";
+                var_dump($cek_data_user1);
             } elseif ($cek_data_user2 > 1) {
+                var_dump($cek_data_user2);
                 echo "username sama";
             } elseif ($cek_data_user3 > 1) {
+                var_dump($cek_data_user3);
                 echo "email sama";
             } else {
 
@@ -158,6 +165,10 @@ class data_user extends CI_Controller
             $this->load->view('templates/footer');
         }
     }
+
+
+
+
 
 
 
