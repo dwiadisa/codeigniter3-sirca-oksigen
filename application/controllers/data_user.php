@@ -44,9 +44,6 @@ class data_user extends CI_Controller
         $this->form_validation->set_rules('password', 'Password Pengguna', 'required|min_length[8]');
         $this->form_validation->set_rules('level', 'Level Pengguna', 'required');
         $this->form_validation->set_rules('status', 'Status Pengguna', 'required');
-
-
-
         if ($this->form_validation->run() != false) {
 
             $nama = $this->input->post('nama');
@@ -64,6 +61,7 @@ class data_user extends CI_Controller
                 'pengguna_status' => $status
             );
             $this->m_data->insert_data($data, 'pengguna');
+
             redirect(base_url() . 'data_user');
         } else {
             $this->load->view('templates/header_sidebar');
@@ -87,43 +85,69 @@ class data_user extends CI_Controller
 
         // Wajib isi
         $this->form_validation->set_rules('nama', 'Nama Pengguna', 'required');
-        $this->form_validation->set_rules('email', 'Email Pengguna', 'required|is_unique[pengguna.pengguna_email]');
-        $this->form_validation->set_rules('username', 'Username Pengguna', 'required|is_unique[pengguna.pengguna_username]');
+        $this->form_validation->set_rules('email', 'Email Pengguna', 'required');
+        $this->form_validation->set_rules('username', 'Username Pengguna', 'required');
         $this->form_validation->set_rules('level', 'Level Pengguna', 'required');
         $this->form_validation->set_rules('status', 'Status Pengguna', 'required');
         if ($this->form_validation->run() != false) {
-            $id = $this->input->post('id');
-            $nama = $this->input->post('nama');
+            // pengecekan terhadap data ganda
             $email = $this->input->post('email');
             $username = $this->input->post('username');
-            $password = md5($this->input->post('password'));
-            $level = $this->input->post('level');
-            $status = $this->input->post('status');
-            //cek jika form password tidak diisi, maka jangan update kolum password, dan sebaliknya
-            if ($this->input->post('password') == "") {
-                $data = array(
-                    'pengguna_nama' => $nama,
-                    'pengguna_email' => $email,
-                    'pengguna_username' => $username,
-                    'pengguna_level' => $level,
-                    'pengguna_status' => $status
-                );
+            // );
+            // QUERY SQL untuk pengecekan data username dan password yang sama
+            $cek_data_user = $this->db->query("SELECT * FROM `pengguna` WHERE `pengguna_username`= '$username' OR `pengguna_email` = '$email'")->num_rows();
+            $cek_data_user1 = $this->db->query("SELECT * FROM `pengguna` WHERE `pengguna_username`= '$username' AND `pengguna_email` = '$email'")->num_rows();
+            $cek_data_user2 = $this->db->query("SELECT * FROM `pengguna` WHERE `pengguna_username`= '$username' ")->num_rows();
+            $cek_data_user3 = $this->db->query("SELECT * FROM `pengguna` WHERE `pengguna_email` = '$email'")->num_rows();
+
+
+            if ($cek_data_user > 1) {
+                echo "username / email sama";
+            } elseif ($cek_data_user1 > 1) {
+                echo "username dan email sama";
+            } elseif ($cek_data_user2 > 1) {
+                echo "username sama";
+            } elseif ($cek_data_user3 > 1) {
+                echo "email sama";
             } else {
-                $data = array(
-                    'pengguna_nama' => $nama,
-                    'pengguna_email' => $email,
-                    'pengguna_username' => $username,
-                    'pengguna_password' => $password,
-                    'pengguna_level' => $level,
-                    'pengguna_status' => $status
-                );
+
+                // echo "data aman lanjutkan";
+                $id = $this->input->post('id');
+                $nama = $this->input->post('nama');
+                $email = $this->input->post('email');
+                $username = $this->input->post('username');
+                $password = md5($this->input->post('password'));
+                $level = $this->input->post('level');
+                $status = $this->input->post('status');
+                //cek jika form password tidak diisi, maka jangan update kolum password, dan sebaliknya
+                if ($this->input->post('password') == "") {
+                    $data = array(
+                        'pengguna_nama' => $nama,
+                        'pengguna_email' => $email,
+                        'pengguna_username' => $username,
+                        'pengguna_level' => $level,
+                        'pengguna_status' => $status
+                    );
+                } else {
+                    $data = array(
+                        'pengguna_nama' => $nama,
+                        'pengguna_email' => $email,
+                        'pengguna_username' => $username,
+                        'pengguna_password' => $password,
+                        'pengguna_level' => $level,
+                        'pengguna_status' => $status
+                    );
+
+                    $where = array(
+                        'id_pengguna' => $id
+                    );
+                    $this->m_data->update_data($where, $data, 'pengguna');
+                    redirect(base_url() . 'data_user');
+                }
             }
-            $where = array(
-                'id_pengguna' => $id
-            );
-            $this->m_data->update_data($where, $data, 'pengguna');
-            redirect(base_url() . 'data_user');
         } else {
+
+
             $id = $this->input->post('id');
             $where = array(
                 'id_pengguna' => $id
@@ -134,6 +158,9 @@ class data_user extends CI_Controller
             $this->load->view('templates/footer');
         }
     }
+
+
+
     public function data_user_hapus($id)
     {
 

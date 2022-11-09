@@ -10,6 +10,8 @@ class M_data extends CI_Model
     {
         return $this->db->get_where($table, $where);
     }
+
+
     // fungsi untuk mengupdate atau mengubah data di database
     function update_data($where, $data, $table)
     {
