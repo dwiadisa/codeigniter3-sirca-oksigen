@@ -48,64 +48,23 @@ class data_user extends CI_Controller
 
 
         if ($this->form_validation->run() != false) {
+
+            $nama = $this->input->post('nama');
             $email = $this->input->post('email');
             $username = $this->input->post('username');
-            //  pengecekan terhadap akun ganda di masukkan ke array
-            $where = array(
-                'pengguna_username' => $username,
+            $password = md5($this->input->post('password'));
+            $level = $this->input->post('level');
+            $status = $this->input->post('status');
+            $data = array(
+                'pengguna_nama' => $nama,
                 'pengguna_email' => $email,
+                'pengguna_username' => $username,
+                'pengguna_password' => $password,
+                'pengguna_level' => $level,
+                'pengguna_status' => $status
             );
-
-            // query pengecekan isi row di tabel pengguna
-            $cek_user = $this->m_data->cek_data('pengguna', $where)->num_rows();
-            if ($cek_user > 1) {
-                // jika terdapat  salah satu data sama maka tampilkan error
-
-                $error =  "<script>
-                alert('Data User telah terdaftar!');
-                window.location.href = 'tambah_user';
-              </script>
-              ";
-                // echo $error;
-                echo $error;
-            } else {
-                // jika tidak ada data yang sama maka masukkan ke database
-                $nama = $this->input->post('nama');
-                $email = $this->input->post('email');
-                $username = $this->input->post('username');
-                $password = md5($this->input->post('password'));
-                $level = $this->input->post('level');
-                $status = $this->input->post('status');
-                $data = array(
-                    'pengguna_nama' => $nama,
-                    'pengguna_email' => $email,
-                    'pengguna_username' => $username,
-                    'pengguna_password' => $password,
-                    'pengguna_level' => $level,
-                    'pengguna_status' => $status
-                );
-                $this->m_data->insert_data($data, 'pengguna');
-                redirect(base_url() . 'data_user');
-            }
-
-
-
-            // $nama = $this->input->post('nama');
-            // $email = $this->input->post('email');
-            // $username = $this->input->post('username');
-            // $password = md5($this->input->post('password'));
-            // $level = $this->input->post('level');
-            // $status = $this->input->post('status');
-            // $data = array(
-            //     'pengguna_nama' => $nama,
-            //     'pengguna_email' => $email,
-            //     'pengguna_username' => $username,
-            //     'pengguna_password' => $password,
-            //     'pengguna_level' => $level,
-            //     'pengguna_status' => $status
-            // );
-            // $this->m_data->insert_data($data, 'pengguna');
-            // redirect(base_url() . 'data_user');
+            $this->m_data->insert_data($data, 'pengguna');
+            redirect(base_url() . 'data_user');
         } else {
             $this->load->view('templates/header_sidebar');
             $this->load->view('partial/data_user/tambah_user');
