@@ -15,6 +15,7 @@
                 <table id="tabel-data" class="table table-striped table-bordered" width="100%" cellspacing="0">
                     <thead>
                         <tr>
+                            <!-- nambah -->
                             <th scope="col">No.</th>
                             <th scope="col">Foto Diri</th>
                             <th scope="col">NIM</th>
