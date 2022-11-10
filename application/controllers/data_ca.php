@@ -297,6 +297,7 @@ class data_ca extends CI_Controller
         // form validation untuk kolom divisi
         $this->form_validation->set_rules('alasan', 'Alasan', 'required');
         $this->form_validation->set_rules('riwayat_organisasi', 'Alasan', 'required');
+        $this->form_validation->set_rules('form_hidden_foto', 'Foto');
         // validasi untuk foto
 
         if (empty($_FILES['foto_diri']['name'])) {
@@ -313,6 +314,10 @@ class data_ca extends CI_Controller
             $cek_data_ca1 = $this->db->query("SELECT * FROM `data_ca` WHERE `pengguna_email` = '$username' OR pengguna_email = '$email' OR (nim = '$nim')")->num_rows();
             $cek_data_ca2 = $this->db->query("SELECT * FROM `data_ca` WHERE `pengguna_username`= '$username' ")->num_rows();
             $cek_data_ca3 = $this->db->query("SELECT * FROM `data_ca` WHERE `pengguna_email` = '$email'")->num_rows();
+            // QUERY untuk data yang bernilai sama
+
+
+
 
             // mengecek query ambil data
             // membandingkan dari form

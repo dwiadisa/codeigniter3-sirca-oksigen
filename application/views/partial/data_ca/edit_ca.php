@@ -319,7 +319,7 @@
                         <div class="row mb-3">
                             <label for="inputNumber" class="col-sm-2 col-form-label">File Upload</label>
                             <div class="col-sm-10">
-                                <input class="form-control" name="foto_diri" value="<?php $ca->foto_diri; ?>" type="file" id="formFile">
+                                <input class="form-control" name="foto_diri" value="<?php echo $ca->foto_diri; ?>" type="file" id="formFile">
                             </div>
                         </div>
                         <!-- form upload foto diri -->
