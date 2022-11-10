@@ -274,9 +274,9 @@ class data_ca extends CI_Controller
 
     public function update_ca()
     {
+        // form validation untuk data autentifikasi
         $this->form_validation->set_rules('username', 'User name', 'required');
         $this->form_validation->set_rules('email', 'Email', 'required');
-        $this->form_validation->set_rules('password', 'Password', 'required');
         //   form validation untuk formulir pendaftaran
         $this->form_validation->set_rules('nama', 'Nama', 'required');
         $this->form_validation->set_rules('nim', 'NIM', 'required', 'integer');
@@ -297,121 +297,119 @@ class data_ca extends CI_Controller
         // form validation untuk kolom divisi
         $this->form_validation->set_rules('alasan', 'Alasan', 'required');
         $this->form_validation->set_rules('riwayat_organisasi', 'Alasan', 'required');
-        $this->form_validation->set_rules('form_hidden_foto', 'Foto');
         // validasi untuk foto
 
         if (empty($_FILES['foto_diri']['name'])) {
             $this->form_validation->set_rules('foto_diri', 'Foto');
         }
-        if ($this->form_validation->run() != false) {
 
+
+        if ($this->form_validation->run() != false) {
+            // perjalanan untuk form validation data auth
+            // $id =  $this->input->post('id');
+
+            $id =  $this->input->post('id_ca');
+            // perjalanan untuk form validation data auth
             $username = $this->input->post('username');
             $email = $this->input->post('email');
+            $password = md5($this->input->post('password'));
+            // perjalanan untuk form validation data diri
+            $nama = $this->input->post('nama');
             $nim = $this->input->post('nim');
-            // );
-            // QUERY SQL untuk pengecekan data username, nim dan email yang sama
-            $cek_data_ca = $this->db->query("SELECT * FROM `data_ca` WHERE `pengguna_email` = '$username' AND pengguna_email = '$email' AND (nim = '$nim')")->num_rows();
-            $cek_data_ca1 = $this->db->query("SELECT * FROM `data_ca` WHERE `pengguna_email` = '$username' OR pengguna_email = '$email' OR (nim = '$nim')")->num_rows();
-            $cek_data_ca2 = $this->db->query("SELECT * FROM `data_ca` WHERE `pengguna_username`= '$username' ")->num_rows();
-            $cek_data_ca3 = $this->db->query("SELECT * FROM `data_ca` WHERE `pengguna_email` = '$email'")->num_rows();
-            // QUERY untuk data yang bernilai sama
-
-
-
-
-            // mengecek query ambil data
-            // membandingkan dari form
-            // jadikan perbandingan
-            if ($cek_data_ca > 1) {
-                echo "username / email sama";
-                var_dump($cek_data_ca);
-            } elseif ($cek_data_ca1 > 1) {
-                echo "username dan email sama";
-                var_dump($cek_data_ca1);
-            } elseif ($cek_data_ca2 > 1) {
-                var_dump($cek_data_ca2);
-                echo "username sama";
-            } elseif ($cek_data_ca3 > 1) {
-                var_dump($cek_data_ca3);
-                echo "email sama";
+            $fakultas = $this->input->post('fakultas');
+            $prodi = $this->input->post('prodi');
+            $jenis_kelamin = $this->input->post('jenis_kelamin');
+            $tempat_lahir = $this->input->post('tempat_lahir');
+            $tanggal_lahir = $this->input->post('tanggal_lahir');
+            $alamat_rumah = $this->input->post('alamat_rumah');
+            $alamat_kost = $this->input->post('alamat_kost');
+            $instagram = $this->input->post('instagram');
+            $no_hp = $this->input->post('no_hp');
+            $hobi = $this->input->post('hobi');
+            // perjalanan untuk form validation divisi
+            $drama = $this->input->post("div_drama");
+            if ($drama != null) {
+                $drama = "1";
             } else {
+                $drama =  "0";
+            }
+            $tari = $this->input->post("div_tari");
+            if ($tari != null) {
+                $tari =  "1";
+            } else {
+                $tari =  "0";
+            }
+            $rupa = $this->input->post("div_rupa");
+            if ($rupa != null) {
+                $rupa =  "1";
+            } else {
+                $rupa =  "0";
+            }
+            $sinema = $this->input->post("div_sinema");
+            if ($sinema != null) {
+                $sinema =  "1";
+            } else {
+                $sinema =  "0";
+            }
+            // perjalanan untuk form validation divisi
 
-                // perjalanan untuk form validation data auth
-                // $id =  $this->input->post('id');
 
-                $id =  $this->input->post('id_ca');
-                // perjalanan untuk form validation data auth
-                $username = $this->input->post('username');
-                $email = $this->input->post('email');
-                $password = md5($this->input->post('password'));
-                // perjalanan untuk form validation data diri
-                $nama = $this->input->post('nama');
-                $nim = $this->input->post('nim');
-                $fakultas = $this->input->post('fakultas');
-                $prodi = $this->input->post('prodi');
-                $jenis_kelamin = $this->input->post('jenis_kelamin');
-                $tempat_lahir = $this->input->post('tempat_lahir');
-                $tanggal_lahir = $this->input->post('tanggal_lahir');
-                $alamat_rumah = $this->input->post('alamat_rumah');
-                $alamat_kost = $this->input->post('alamat_kost');
-                $instagram = $this->input->post('instagram');
-                $no_hp = $this->input->post('no_hp');
-                $hobi = $this->input->post('hobi');
-                // perjalanan untuk form validation divisi
-                $drama = $this->input->post("div_drama");
-                if ($drama != null) {
-                    $drama = "1";
+            $alasan = $this->input->post('alasan');
+            $riwayat_organisasi = $this->input->post('riwayat_organisasi');
+            // perjalanan untuk upload file ktm dan foto diri
+            // foto diri
+            $foto_diri = $_FILES['foto_diri'];
+            if ($foto_diri == "") {
+            } else {
+                $config['upload_path'] = './upload/foto_ca';
+                $config['allowed_types'] = 'jpg|png|gif';
+                $config['max_size'] = '2048';
+                // maksimal ukuran file adalah 2 mb
+                $this->upload->library('upload', $config);
+                $this->upload->initialize($config);
+                // $this->upload->library('upload', $config);
+                if (!$this->upload->do_upload('foto_diri')) {
+                    echo  "<script>
+                        alert('Foto terlalu besar (lebih 2 mb)/format file bukan jpg atau png. untuk foto bisa ditambahkan nanti ');
+
+                        </script>";
+                    $foto_diri = "null_foto.jpg";
+                    // var_dump($this->upload->display_errors());
+                    // die();
                 } else {
-                    $drama =  "0";
+                    $foto_diri = $this->upload->data('file_name');
                 }
-                $tari = $this->input->post("div_tari");
-                if ($tari != null) {
-                    $tari =  "1";
-                } else {
-                    $tari =  "0";
-                }
-                $rupa = $this->input->post("div_rupa");
-                if ($rupa != null) {
-                    $rupa =  "1";
-                } else {
-                    $rupa =  "0";
-                }
-                $sinema = $this->input->post("div_sinema");
-                if ($sinema != null) {
-                    $sinema =  "1";
-                } else {
-                    $sinema =  "0";
-                }
-                // perjalanan untuk form validation divisi
+            }
 
-
-                $alasan = $this->input->post('alasan');
-                $riwayat_organisasi = $this->input->post('riwayat_organisasi');
-                // perjalanan untuk upload file ktm dan foto diri
-                // foto diri
-                $foto_diri = $_FILES['foto_diri'];
-                if ($foto_diri == "") {
-                } else {
-                    $config['upload_path'] = './upload/foto_ca';
-                    $config['allowed_types'] = 'jpg|png|gif';
-                    $config['max_size'] = '2048';
-                    // maksimal ukuran file adalah 2 mb
-                    $this->load->library('upload', $config);
-                    $this->upload->initialize($config);
-                    // $this->upload->library('upload', $config);
-                    if (!$this->upload->do_upload('foto_diri')) {
-                        echo  "<script>
-                    alert('Foto terlalu besar (lebih 2 mb)/format file bukan jpg atau png. untuk foto bisa ditambahkan nanti ');
-
-                    </script>";
-                        $foto_diri = "null_foto.jpg";
-                        // var_dump($this->upload->display_errors());
-                        // die();
-                    } else {
-                        $foto_diri = $this->upload->data('file_name');
-                    }
-                }
-
+            if ($this->input->post('password') == "") {
+                $data = array(
+                    'pengguna_username' => $username,
+                    'pengguna_nama' => $nama,
+                    'pengguna_email' => $email,
+                    'pengguna_level' => 'CALON_ANGGOTA',
+                    'pengguna_status' => '1',
+                    'nim' => $nim,
+                    'fakultas' => $fakultas,
+                    'prodi' => $prodi,
+                    'jenis_kelamin' => $jenis_kelamin,
+                    'tempat_lahir' => $tempat_lahir,
+                    'tanggal_lahir' => $tanggal_lahir,
+                    'alamat_rumah' => $alamat_rumah,
+                    'alamat_kost' => $alamat_kost,
+                    'instagram' => $instagram,
+                    'no_hp' => $no_hp,
+                    'hobi' => $hobi,
+                    'div_drama' => $drama,
+                    'div_tari' =>  $tari,
+                    'div_rupa' => $rupa,
+                    'div_sinema' => $sinema,
+                    'alasan' => $alasan,
+                    'riwayat_organisasi' => $riwayat_organisasi,
+                    'foto_ktm' => "null_ktm.png",
+                    'foto_diri' => $foto_diri,
+                    'tanggal_submit' => date("Y-m-d"),
+                );
+            } else {
 
                 $data = array(
                     'pengguna_username' => $username,
@@ -441,175 +439,25 @@ class data_ca extends CI_Controller
                     'foto_diri' => $foto_diri,
                     'tanggal_submit' => date("Y-m-d"),
                 );
-
-
-                $where = array(
-                    'id_ca' => $id
-                );
-
-                $this->m_data->update_data($where, $data, 'data_ca');
-                redirect(base_url() . 'data_ca');
-
-                echo "data lolos";
             }
+            $where = array(
+                'id_ca' => $id
+            );
+
+            $update_ca_query = $this->m_data->update_data($where, $data, 'data_ca');
+            // jika terdapat data ganda yang diiunput maka munculkan error
+
+
+
+
+
+            var_dump($data);
         } else {
-            echo "tidak terjadi apa-apa ";
+
+            echo "data gagal diubah";
+            // var_dump($data);
         }
     }
-    // public function update_ca()
-    // {
-    //     // form validation untuk data autentifikasi
-    //     $this->form_validation->set_rules('username', 'User name', 'required|is_unique[data_ca.pengguna_username]');
-    //     $this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[data_ca.pengguna_email]');
-    //     $this->form_validation->set_rules('password', 'Password', 'required');
-    //     //   form validation untuk formulir pendaftaran
-    //     $this->form_validation->set_rules('nama', 'Nama', 'required');
-    //     $this->form_validation->set_rules('nim', 'NIM', 'required|is_unique[data_ca.nim]', 'integer');
-    //     $this->form_validation->set_rules('fakultas', 'Fakultas', 'required');
-    //     $this->form_validation->set_rules('prodi', 'Prodi', 'required');
-    //     $this->form_validation->set_rules('jenis_kelamin', 'Jenis Kelamin', 'required');
-    //     $this->form_validation->set_rules('tempat_lahir', 'Tempat Lahir', 'required');
-    //     $this->form_validation->set_rules('tanggal_lahir', 'Tempat Lahir', 'required');
-    //     $this->form_validation->set_rules('alamat_rumah', 'Alamat Rumah', 'required');
-    //     $this->form_validation->set_rules('alamat_kost', 'Alamat Kost');
-
-    //     $this->form_validation->set_rules('instagram', 'Instagram');
-    //     $this->form_validation->set_rules('no_hp', 'Nomor HP', 'required', 'integer');
-    //     $this->form_validation->set_rules('hobi', 'Hobi');
-    //     // $this->form_validation->set_rules('hobi', 'Hobi');
-    //     // form validation untuk kolom divisi
-    //     // untuk pemilihan subdivisi berada di perintah $this->input-post dikarenakan berupa form checkbox
-    //     // form validation untuk kolom divisi
-    //     $this->form_validation->set_rules('alasan', 'Alasan', 'required');
-    //     $this->form_validation->set_rules('riwayat_organisasi', 'Alasan', 'required');
-    //     // validasi untuk foto
-
-    //     if (empty($_FILES['foto_diri']['name'])) {
-    //         $this->form_validation->set_rules('foto_diri', 'Foto', 'required');
-    //     }
-
-
-    //     if ($this->form_validation->run() != false) {
-    //         // perjalanan untuk form validation data auth
-    //         // $id =  $this->input->post('id');
-
-    //         $id =  $this->input->post('id_ca');
-    //         // perjalanan untuk form validation data auth
-    //         $username = $this->input->post('username');
-    //         $email = $this->input->post('email');
-    //         $password = md5($this->input->post('password'));
-    //         // perjalanan untuk form validation data diri
-    //         $nama = $this->input->post('nama');
-    //         $nim = $this->input->post('nim');
-    //         $fakultas = $this->input->post('fakultas');
-    //         $prodi = $this->input->post('prodi');
-    //         $jenis_kelamin = $this->input->post('jenis_kelamin');
-    //         $tempat_lahir = $this->input->post('tempat_lahir');
-    //         $tanggal_lahir = $this->input->post('tanggal_lahir');
-    //         $alamat_rumah = $this->input->post('alamat_rumah');
-    //         $alamat_kost = $this->input->post('alamat_kost');
-    //         $instagram = $this->input->post('instagram');
-    //         $no_hp = $this->input->post('no_hp');
-    //         $hobi = $this->input->post('hobi');
-    //         // perjalanan untuk form validation divisi
-    //         $drama = $this->input->post("div_drama");
-    //         if ($drama != null) {
-    //             $drama = "1";
-    //         } else {
-    //             $drama =  "0";
-    //         }
-    //         $tari = $this->input->post("div_tari");
-    //         if ($tari != null) {
-    //             $tari =  "1";
-    //         } else {
-    //             $tari =  "0";
-    //         }
-    //         $rupa = $this->input->post("div_rupa");
-    //         if ($rupa != null) {
-    //             $rupa =  "1";
-    //         } else {
-    //             $rupa =  "0";
-    //         }
-    //         $sinema = $this->input->post("div_sinema");
-    //         if ($sinema != null) {
-    //             $sinema =  "1";
-    //         } else {
-    //             $sinema =  "0";
-    //         }
-    //         // perjalanan untuk form validation divisi
-
-
-    //         $alasan = $this->input->post('alasan');
-    //         $riwayat_organisasi = $this->input->post('riwayat_organisasi');
-    //         // perjalanan untuk upload file ktm dan foto diri
-    //         // foto diri
-    //         $foto_diri = $_FILES['foto_diri'];
-    //         if ($foto_diri == "") {
-    //         } else {
-    //             $config['upload_path'] = './upload/foto_ca';
-    //             $config['allowed_types'] = 'jpg|png|gif';
-    //             $config['max_size'] = '2048';
-    //             // maksimal ukuran file adalah 2 mb
-    //             $this->load->library('upload', $config);
-    //             $this->upload->initialize($config);
-    //             // $this->upload->library('upload', $config);
-    //             if (!$this->upload->do_upload('foto_diri')) {
-    //                 echo  "<script>
-    //                 alert('Foto terlalu besar (lebih 2 mb)/format file bukan jpg atau png. untuk foto bisa ditambahkan nanti ');
-
-    //                 </script>";
-    //                 $foto_diri = "null_foto.jpg";
-    //                 // var_dump($this->upload->display_errors());
-    //                 // die();
-    //             } else {
-    //                 $foto_diri = $this->upload->data('file_name');
-    //             }
-    //         }
-
-
-    //         $data = array(
-    //             'pengguna_username' => $username,
-    //             'pengguna_nama' => $nama,
-    //             'pengguna_password' => $password,
-    //             'pengguna_email' => $email,
-    //             'pengguna_level' => 'CALON_ANGGOTA',
-    //             'pengguna_status' => '1',
-    //             'nim' => $nim,
-    //             'fakultas' => $fakultas,
-    //             'prodi' => $prodi,
-    //             'jenis_kelamin' => $jenis_kelamin,
-    //             'tempat_lahir' => $tempat_lahir,
-    //             'tanggal_lahir' => $tanggal_lahir,
-    //             'alamat_rumah' => $alamat_rumah,
-    //             'alamat_kost' => $alamat_kost,
-    //             'instagram' => $instagram,
-    //             'no_hp' => $no_hp,
-    //             'hobi' => $hobi,
-    //             'div_drama' => $drama,
-    //             'div_tari' =>  $tari,
-    //             'div_rupa' => $rupa,
-    //             'div_sinema' => $sinema,
-    //             'alasan' => $alasan,
-    //             'riwayat_organisasi' => $riwayat_organisasi,
-    //             'foto_ktm' => "null_ktm.png",
-    //             'foto_diri' => $foto_diri,
-    //             'tanggal_submit' => date("Y-m-d"),
-    //         );
-
-
-    //         // $where = array(
-    //         //     'id_ca' => $id
-    //         // );
-
-    //         // $this->m_data->update_data($where, $data, 'data_ca');
-    //         // redirect(base_url() . 'data_ca');
-    //         var_dump($data);
-    //     } else {
-
-    //         echo "data gagal diubah";
-    //         // var_dump($data);
-    //     }
-    // }
 
 
 
