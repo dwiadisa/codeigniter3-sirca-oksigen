@@ -43,6 +43,7 @@
                             <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
                             <div class="col-sm-10">
                                 <input type="password" name="password" class="form-control">
+                                <small>kosongkan jika tidak merubah password</small>
                             </div>
                         </div>
 
