@@ -85,76 +85,45 @@ class data_user extends CI_Controller
 
         // Wajib isi
         $this->form_validation->set_rules('nama', 'Nama Pengguna', 'required');
-        // dijadikan variabel karena digunakan untuk validasi data ganda
-        $form_email = $this->form_validation->set_rules('email', 'Email Pengguna', 'required');
-        $from_username = $this->form_validation->set_rules('username', 'Username Pengguna', 'required');
+        $this->form_validation->set_rules('email', 'Email Pengguna', 'required');
+        $this->form_validation->set_rules('username', 'Username Pengguna', 'required');
         $this->form_validation->set_rules('level', 'Level Pengguna', 'required');
         $this->form_validation->set_rules('status', 'Status Pengguna', 'required');
         if ($this->form_validation->run() != false) {
-            // pengecekan terhadap data ganda
+            // echo "data aman lanjutkan";
+            $id = $this->input->post('id');
+            $nama = $this->input->post('nama');
             $email = $this->input->post('email');
             $username = $this->input->post('username');
-            // );
-            // QUERY SQL untuk pengecekan data username dan password yang sama
-            $cek_data_user = $this->db->query("SELECT * FROM `pengguna` WHERE `pengguna_username`= '$username' OR `pengguna_email` = '$email'")->num_rows();
-            $cek_data_user1 = $this->db->query("SELECT * FROM `pengguna` WHERE `pengguna_username`= '$username' AND `pengguna_email` = '$email'")->num_rows();
-            $cek_data_user2 = $this->db->query("SELECT * FROM `pengguna` WHERE `pengguna_username`= '$username' ")->num_rows();
-            $cek_data_user3 = $this->db->query("SELECT * FROM `pengguna` WHERE `pengguna_email` = '$email'")->num_rows();
-
-            // mengecek query ambil data
-            // membandingkan dari form
-            // jadikan perbandingan
-            if ($cek_data_user > 1) {
-                echo "username / email sama";
-                var_dump($cek_data_user);
-            } elseif ($cek_data_user1 > 1) {
-                echo "username dan email sama";
-                var_dump($cek_data_user1);
-            } elseif ($cek_data_user2 > 1) {
-                var_dump($cek_data_user2);
-                echo "username sama";
-            } elseif ($cek_data_user3 > 1) {
-                var_dump($cek_data_user3);
-                echo "email sama";
+            $password = md5($this->input->post('password'));
+            $level = $this->input->post('level');
+            $status = $this->input->post('status');
+            //cek jika form password tidak diisi, maka jangan update kolum password, dan sebaliknya
+            if ($this->input->post('password') == "") {
+                $data = array(
+                    'pengguna_nama' => $nama,
+                    'pengguna_email' => $email,
+                    'pengguna_username' => $username,
+                    'pengguna_level' => $level,
+                    'pengguna_status' => $status
+                );
             } else {
-
-                // echo "data aman lanjutkan";
-                $id = $this->input->post('id');
-                $nama = $this->input->post('nama');
-                $email = $this->input->post('email');
-                $username = $this->input->post('username');
-                $password = md5($this->input->post('password'));
-                $level = $this->input->post('level');
-                $status = $this->input->post('status');
-                //cek jika form password tidak diisi, maka jangan update kolum password, dan sebaliknya
-                if ($this->input->post('password') == "") {
-                    $data = array(
-                        'pengguna_nama' => $nama,
-                        'pengguna_email' => $email,
-                        'pengguna_username' => $username,
-                        'pengguna_level' => $level,
-                        'pengguna_status' => $status
-                    );
-                } else {
-                    $data = array(
-                        'pengguna_nama' => $nama,
-                        'pengguna_email' => $email,
-                        'pengguna_username' => $username,
-                        'pengguna_password' => $password,
-                        'pengguna_level' => $level,
-                        'pengguna_status' => $status
-                    );
-
-                    $where = array(
-                        'id_pengguna' => $id
-                    );
-                    $this->m_data->update_data($where, $data, 'pengguna');
-                    redirect(base_url() . 'data_user');
-                }
+                $data = array(
+                    'pengguna_nama' => $nama,
+                    'pengguna_email' => $email,
+                    'pengguna_username' => $username,
+                    'pengguna_password' => $password,
+                    'pengguna_level' => $level,
+                    'pengguna_status' => $status
+                );
             }
+            $where = array(
+                'id_pengguna' => $id
+            );
+            $this->m_data->update_data($where, $data, 'pengguna');
+            redirect(base_url() . 'data_user');
+            var_dump($data);
         } else {
-
-
             $id = $this->input->post('id');
             $where = array(
                 'id_pengguna' => $id

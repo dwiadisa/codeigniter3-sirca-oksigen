@@ -42,7 +42,7 @@
                         </div>
                         <div class="col-12">
                             <label for="inputPassword4" class="form-label">Password</label>
-                            <input type="password" class="form-control" name="password" id="inputPassword4" value="<?php echo $p->pengguna_password; ?>">
+                            <input type="password" class="form-control" name="password" id="inputPassword4">
                             <small class="text-danger">
                                 <?php echo
                                 form_error('password'); ?>
