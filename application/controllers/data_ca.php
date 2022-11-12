@@ -456,15 +456,21 @@ class data_ca extends CI_Controller
             redirect(base_url() . 'data_ca');
             // jika terdapat data ganda yang diiunput maka munculkan error
 
-
-
-
-
             // var_dump($data);
         } else {
+            $id =  $this->input->post('id_ca');
+            $where = array(
+                'id_ca' => $id
+            );
+            // load model pada database untuk form ubah
+            $data['fakultas'] =  $this->akademik->get_fakultas();
+            // $data['prodi'] = $this->m_data->get_data('data_prodi')->result();
+            $data['calon_anggota'] = $this->m_data->edit_data($where, 'data_ca')->result();
+            // load model pada database untuk form ubah
 
-            echo "data gagal diubah";
-            // var_dump($data);
+            $this->load->view('templates/header_sidebar');
+            $this->load->view('partial/data_ca/edit_ca', $data);
+            $this->load->view('templates/footer');
         }
     }
 
