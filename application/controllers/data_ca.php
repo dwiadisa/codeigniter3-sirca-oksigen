@@ -124,7 +124,7 @@ class data_ca extends CI_Controller
             $alasan = $this->input->post('alasan');
             $riwayat_organisasi = $this->input->post('riwayat_organisasi');
             // perjalanan untuk upload file ktm dan foto diri
-            // foto diri
+            // // foto diri
             $foto_diri = $_FILES['foto_diri'];
             if ($foto_diri == "") {
             } else {
@@ -138,7 +138,7 @@ class data_ca extends CI_Controller
                 if (!$this->upload->do_upload('foto_diri')) {
                     echo  "<script>
                     alert('Foto terlalu besar (lebih 2 mb)/format file bukan jpg atau png. untuk foto bisa ditambahkan nanti ');
-                    
+
                     </script>";
                     $foto_diri = "null_foto.jpg";
                     // var_dump($this->upload->display_errors());
@@ -299,9 +299,9 @@ class data_ca extends CI_Controller
         $this->form_validation->set_rules('riwayat_organisasi', 'Alasan', 'required');
         // validasi untuk foto
 
-        if (empty($_FILES['foto_diri']['name'])) {
-            $this->form_validation->set_rules('foto_diri', 'Foto');
-        }
+        // if (empty($_FILES['foto_diri']['name'])) {
+        //     $this->form_validation->set_rules('foto_diri', 'Foto');
+        // }
 
 
         if ($this->form_validation->run() != false) {
@@ -326,6 +326,10 @@ class data_ca extends CI_Controller
             $instagram = $this->input->post('instagram');
             $no_hp = $this->input->post('no_hp');
             $hobi = $this->input->post('hobi');
+            // penampung nama data gambar
+
+            $foto_diri = $this->input->post('hid_foto_diri');
+            // penampung nama data gambar
             // perjalanan untuk form validation divisi
             $drama = $this->input->post("div_drama");
             if ($drama != null) {
@@ -356,30 +360,34 @@ class data_ca extends CI_Controller
 
             $alasan = $this->input->post('alasan');
             $riwayat_organisasi = $this->input->post('riwayat_organisasi');
-            // perjalanan untuk upload file ktm dan foto diri
-            // foto diri
-            $foto_diri = $_FILES['foto_diri'];
-            if ($foto_diri == "") {
-            } else {
-                $config['upload_path'] = './upload/foto_ca';
-                $config['allowed_types'] = 'jpg|png|gif';
-                $config['max_size'] = '2048';
-                // maksimal ukuran file adalah 2 mb
-                $this->upload->library('upload', $config);
-                $this->upload->initialize($config);
-                // $this->upload->library('upload', $config);
-                if (!$this->upload->do_upload('foto_diri')) {
-                    echo  "<script>
-                        alert('Foto terlalu besar (lebih 2 mb)/format file bukan jpg atau png. untuk foto bisa ditambahkan nanti ');
 
-                        </script>";
-                    $foto_diri = "null_foto.jpg";
-                    // var_dump($this->upload->display_errors());
-                    // die();
-                } else {
-                    $foto_diri = $this->upload->data('file_name');
-                }
+            $file_name = $_FILES['foto_diri']['name'];
+            $config['upload_path'] = './upload/foto_ca';
+            $config['allowed_types']        = 'gif|jpg|jpeg|png';
+            $config['overwrite']            = true;
+            $config['max_size']             = 2048; // 1MB
+            // $config['max_width']            = 1080;
+            // $config['max_height']           = 1080;
+
+            $this->load->library('upload', $config);
+            $this->upload->initialize($config);
+            if (!$this->upload->do_upload('foto_diri')) {
+
+                $foto_diri = $this->input->post('hid_foto_diri');
+                // var_dump($foto_diri);
+                // $error = array('error' => $this->upload->display_errors());
+
+                // var_dump($error);
+                // die;
+
+            } else {
+                $foto_diri = ($this->upload->data('file_name'));
+                // commingsoon unlink
+
+                // die;
+                // $foto_diri = $this->upload->data();
             }
+
 
             if ($this->input->post('password') == "") {
                 $data = array(
@@ -445,13 +453,14 @@ class data_ca extends CI_Controller
             );
 
             $update_ca_query = $this->m_data->update_data($where, $data, 'data_ca');
+            redirect(base_url() . 'data_ca');
             // jika terdapat data ganda yang diiunput maka munculkan error
 
 
 
 
 
-            var_dump($data);
+            // var_dump($data);
         } else {
 
             echo "data gagal diubah";

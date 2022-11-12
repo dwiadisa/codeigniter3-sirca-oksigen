@@ -17,7 +17,7 @@
                     <h5 class="card-title">Edit Data Calon Anggota</h5>
 
                     <!-- General Form Elements -->
-                    <form method="POST" action="<?php echo base_url('data_ca/update_ca');  ?>  ">
+                    <form method="POST" action="<?php echo base_url('data_ca/update_ca');  ?>  " enctype="multipart/form-data">
 
 
 
@@ -313,7 +313,10 @@
                             </div>
                         </div>
                         <!-- Riwayat Organisasi -->
+                        <!-- penampung data gambar -->
 
+                        <input type="hidden" name="hid_foto_diri" class="form-control" value="<?php echo $ca->foto_diri; ?>">
+                        <!-- penampung data gambar -->
                         <!-- form upload foto diri -->
 
 
@@ -331,7 +334,9 @@
                         <div class="row mb-3">
                             <label for="inputNumber" class="col-sm-2 col-form-label">Kartu tanda Mahasiswa</label>
                             <div class="col-sm-10">
-                                <input class="form-control" name="ktm" value="<?php $ca->foto_ktm; ?>" type="file" id="formFile">
+                                <input class="form-control" name="ktm" value="<?php
+                                                                                // $ca->foto_ktm;
+                                                                                ?>" type="file" id="formFile">
                             </div>
                         </div> -->
                         <!-- form upload ktm -->
