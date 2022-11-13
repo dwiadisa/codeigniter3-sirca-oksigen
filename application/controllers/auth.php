@@ -110,6 +110,32 @@ class auth extends CI_Controller
 
     public function register_aksi()
     {
+        $this->form_validation->set_rules('nama', 'Nama Pengguna', 'required');
+        $this->form_validation->set_rules('email', 'Email Pengguna', 'required');
+        $this->form_validation->set_rules('username', 'Username Pengguna', 'required|min_length[6]');
+        $this->form_validation->set_rules('password', 'Password Pengguna', 'required|min_length[8]',);
+        $this->form_validation->set_rules('ulang_password', 'Konfirmasi Password', 'required|matches[password]',);
+
+        if ($this->form_validation->run() != false) {
+            $nama = $this->input->post('nama');
+            $email = $this->input->post('email');
+            $username = $this->input->post('username');
+            $password = md5($this->input->post('password'));
+            $ca = "CALON_ANGGOTA";
+            $status = "1";
+            $data = array(
+                'pengguna_nama' => $nama,
+                'pengguna_email' => $email,
+                'pengguna_username' => $username,
+                'pengguna_password' => $password,
+                'pengguna_level' => 'CALON_ANGGOTA',
+                'pengguna_status' => '1'
+            );
+            $this->m_data->insert_data($data, 'data_ca');
+            redirect(base_url() . 'Auth');
+        } else {
+            $this->load->view('register');
+        }
     }
 
 

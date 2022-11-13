@@ -12,10 +12,15 @@
                             <h3>Register Account</h3>
                             <p class="mb-4">Selamat Datang Di Sistem Informasi Pendaftaran Calon Anggota UKM Teater Oksigen UMJ. Buat Akunmu disini</p>
                         </div>
-                        <form action="#" method="post">
+                        <form action="<?php echo base_url('auth/register_aksi') ?>" method="post">
+                            <div class="form-group first">
+                                <label for="username">Username</label>
+                                <input type="username" class="form-control" id="username">
+
+                            </div>
                             <div class="form-group first">
                                 <label for="username">Nama</label>
-                                <input type="text" class="form-control" id="username">
+                                <input type="nama" class="form-control" id="username">
 
                             </div>
                             <div class="form-group first">
@@ -30,7 +35,7 @@
                             </div>
                             <div class="form-group last mb-3">
                                 <label for="password">Ulangi Password</label>
-                                <input type="password" class="form-control" id="ulangi passwordpassword">
+                                <input type="ulang_password" class="form-control" id="ulangi passwordpassword">
 
                             </div>
 
