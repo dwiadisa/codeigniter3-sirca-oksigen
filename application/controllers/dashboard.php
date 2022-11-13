@@ -12,6 +12,14 @@ class dashboard extends CI_Controller
         if (!is_login()) redirect('auth?alert=belum_login');
         $this->load->model('m_data');
         // $this->load->model('selector_akademik');
+
+        // load access block model untuk membatasi user
+
+        $this->load->model('Access_block_model');
+        $this->Access_block_model->ca_akses();
+
+
+        // load access block model untuk membatasi user
     }
 
     public function index()

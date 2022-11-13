@@ -77,7 +77,7 @@
 
 
                         </form>
-                        <a class="btn btn-block btn-primary text-light text-wrap fw-bold" href="<?= base_url('auth/register') ?>" role="button">Register</a>
+                        <a class="btn btn-block btn-primary text-light text-wrap fw-bold" href="<?= base_url('auth/registration') ?>" role="button">Register</a>
                         <span class="ml-auto"><a href="#" class="forgot-pass">Forgot Password</a></span>
                     </div>
                 </div>

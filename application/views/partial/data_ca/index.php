@@ -68,10 +68,13 @@
                                                             } else {
                                                             }  ?>
                                         </div>
-                                        <div class="col-1"><?php if ($p->div_tari == 1) {
-                                                                echo "<i class='fas fa-theater-masks'></i>";
-                                                            } else {
-                                                            } ?></div>
+                                        <div class="col-1">
+                                            <?php
+                                            $icon_tari = "<img src=" . base_url('assets/img/tari.png ') . "width='16px'></img> ";
+                                            ?><?php if ($p->div_tari == 1) {
+                                                    echo $icon_tari;
+                                                } else {
+                                                } ?></div>
                                         <div class="col-1"><?php if ($p->div_rupa == 1) {
                                                                 echo "<i class='fas fa-palette'></i>";
                                                             } else {
@@ -89,7 +92,7 @@
                                     <a href="<?php echo base_url() . 'data_ca/lihat_ca/' . $p->id_ca;  ?>" class="btn btn-info btn-sm"> <i class="fa fa-eye"></i> </a>
                                     <a href="<?php echo base_url() . 'data_ca/print_form_ca/' . $p->id_ca;  ?>" class="btn btn-warning btn-sm"> <i class="fa fa-download"></i> </a>
                                     <a href="<?php echo base_url() . 'data_ca/ubah_ca/' . $p->id_ca;   ?>" class="btn btn-success btn-sm"> <i class="fa fa-pen"></i> </a>
-                                    <a href="<?php echo base_url() . 'dashboard/master_data_hapus/' . $p->id_ca;  ?>" class="btn btn-danger btn-sm"> <i class="fa fa-trash"></i> </a>
+                                    <a href="<?php echo base_url() . 'data_ca/hapus_ca/' . $p->id_ca;  ?>" class="btn btn-danger btn-sm"> <i class="fa fa-trash"></i> </a>
                                 </td>
 
 

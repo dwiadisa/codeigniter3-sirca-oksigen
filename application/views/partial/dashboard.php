@@ -47,7 +47,11 @@
 
                         <div class="d-flex align-items-center">
                             <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                <i class="bi bi-currency-dollar"></i>
+                                <?php
+                                $icon_tari = "<img src=" . base_url('assets/img/tari.png ') . "width='40px'></img> ";
+                                echo $icon_tari;
+                                ?>
+
                             </div>
                             <div class="ps-3">
                                 <h6><?php echo $hitung_tari; ?></h6>

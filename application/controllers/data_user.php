@@ -13,6 +13,13 @@ class data_user extends CI_Controller
         if (!is_login()) redirect('auth?alert=belum_login');
 
         $this->load->model('m_data');
+        // load access block model untuk membatasi user
+
+        $this->load->model('Access_block_model');
+        $this->Access_block_model->admin();
+
+
+        // load access block model untuk membatasi user
     }
 
 

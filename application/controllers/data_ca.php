@@ -19,11 +19,23 @@ class data_ca extends CI_Controller
         // $this->upload->initialize($config);
         // upload file loader
         // $this->load->model('selector_akademik');
+        // load hak akses model
+
+        $this->load->model('Access_block_model');
+        // jika pengguna bukan ca tendang ke 403
+        $this->Access_block_model->ca_akses();
+
+
+        // load hak akses model
+
+
+
+
     }
 
     public function index()
     {
-        $data['pengguna'] = $this->db->query("SELECT * FROM data_ca, data_prodi, data_fakultas WHERE data_ca.fakultas = id_fakultas and prodi=id_prodi")->result();
+        $data['pengguna'] = $this->db->query("SELECT * FROM data_ca, data_prodi, data_fakultas WHERE data_ca.fakultas = id_fakultas and data_ca.prodi=id_prodi")->result();
 
         // $data['prodi_fakultas'] = $this->m_data->relasi_prodi();
 
@@ -138,7 +150,7 @@ class data_ca extends CI_Controller
                 if (!$this->upload->do_upload('foto_diri')) {
                     echo  "<script>
                     alert('Foto terlalu besar (lebih 2 mb)/format file bukan jpg atau png. untuk foto bisa ditambahkan nanti ');
-
+                    history.back()
                     </script>";
                     $foto_diri = "null_foto.jpg";
                     // var_dump($this->upload->display_errors());
@@ -376,11 +388,14 @@ class data_ca extends CI_Controller
                 $foto_diri = $this->input->post('hid_foto_diri');
                 // var_dump($foto_diri);
                 // $error = array('error' => $this->upload->display_errors());
-
+                // echo  "<script>
+                //     alert('Foto terlalu besar (lebih 2 mb)/format file bukan jpg atau png. untuk foto bisa ditambahkan nanti ');
+                //     history.back();
+                //     </script>";
                 // var_dump($error);
                 // die;
-
             } else {
+
                 $foto_diri = ($this->upload->data('file_name'));
                 // commingsoon unlink
 
@@ -476,8 +491,18 @@ class data_ca extends CI_Controller
 
 
 
-    public function hapus_ca()
+    public function hapus_ca($id)
     {
+
+        $where = array(
+            'id_ca' => $id,
+        );
+        $this->m_data->delete_data($where, 'data_ca');
+        redirect(base_url() . 'data_ca');
+
+
+
+
         // harus ada function unlink untuk delete file foto dan ktm
     }
 

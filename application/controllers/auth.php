@@ -87,7 +87,7 @@ class auth extends CI_Controller
                 // alihkan ke dashboard pengguna
 
                 // echo "berhasil Login";
-                redirect(base_url() . 'dashboard');
+                redirect(base_url() . 'form_pendaftaran');
 
                 // redirect(base_url() . 'auth?alert=gagal');
             } else {
@@ -108,9 +108,8 @@ class auth extends CI_Controller
     }
 
 
-    public function register_aksi(){
-
-        
+    public function register_aksi()
+    {
     }
 
 

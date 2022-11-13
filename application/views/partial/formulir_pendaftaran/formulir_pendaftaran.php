@@ -1,8 +1,8 @@
 <main id="main" class="main">
 
     <div class="pagetitle">
-        <h1>Edit Data Calon Anggota</h1>
-
+        <h1>Form Calon Anggota</h1>
+        <a class="btn btn-info mt-1" href="<?php echo base_url('form_pendaftaran/print') ?>" role="button"> <i class="fa-solid fa-download"></i></i> Download</a>
     </div><!-- End Page Title -->
 
     <section class="section">
@@ -14,15 +14,26 @@
                     // var_dump($calon_anggota);
                 ?>
 
-                    <h5 class="card-title">Edit Data Calon Anggota</h5>
+                    <h5 class="card-title">Formulir Pendaftaran Calon Anggota</h5>
 
                     <!-- General Form Elements -->
-                    <form method="POST" action="<?php echo base_url('data_ca/update_ca');  ?>  " enctype="multipart/form-data">
+                    <form method="POST" action="<?php echo base_url('form_pendaftaran/simpan/');  ?>  " enctype="multipart/form-data">
 
 
 
+                        <!-- data gambar -->
+                        <div class=" card container" style="width: 18rem;">
+                            <img src="<?php echo base_url('upload/foto_ca/');
+                                        echo $ca->foto_diri; ?>" class="card-img-top" alt="...">
+                            <div class="card-body">
+
+                            </div>
+                        </div>
+
+                        <!-- data gambar -->
+
+                        <!-- <hr> -->
                         <!-- data auth -->
-
                         <label for="">Data Autentifikasi</label>
                         <hr>
 
@@ -49,7 +60,6 @@
 
 
 
-                        <!-- <hr> -->
                         <!-- data auth -->
 
                         <label for="">Data Calon Anggota</label>

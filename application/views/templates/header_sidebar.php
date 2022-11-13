@@ -129,20 +129,9 @@
 
         <ul class="sidebar-nav" id="sidebar-nav">
 
-            <li class="nav-item">
-                <a class="nav-link " href="<?php echo base_url('dashboard') ?>">
-                    <i class="bi bi-grid"></i>
-                    <span>Dashboard</span>
-                </a>
-            </li><!-- End Dashboard Nav -->
-            <li class="nav-heading">Content Management System (Comming Soon)</li>
+            <!-- End Dashboard Nav -->
+            <!-- <li class="nav-heading">Content Management System (Comming Soon)</li> -->
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="<?php echo base_url('data_user') ?>">
-                    <i class="bi bi-person"></i>
-                    <span>Data User</span>
-                </a>
-            </li><!-- End Blank Page Nav -->
 
 
             <!-- 
@@ -170,51 +159,117 @@
                 </a>
             </li> -->
             <!-- End Blank Page Nav -->
+            <?php
+
+            // jika yang mengakses adalah WTO ADMIN dan WTO VIEW munculkan menu ini
 
 
-            <li class="nav-heading">Sistem Pendaftaran Calon Anggota</li>
+            if ($this->session->userdata('level') == "WTO_ADMIN") { ?>
+
+                <li class="nav-item">
+                    <a class="nav-link " href="<?php echo base_url('dashboard') ?>">
+                        <i class="bi bi-grid"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
 
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="<?php echo base_url('data_ca') ?>">
-                    <i class="bi bi-person"></i>
-                    <span>Data Calon Anggota</span>
-                </a>
-            </li><!-- End Blank Page Nav -->
-            <li class="nav-item">
+                <li class="nav-heading">Sistem Pendaftaran Calon Anggota</li>
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="<?php echo base_url('data_ca') ?>">
+                        <i class="bi bi-person"></i>
+                        <span>Data Calon Anggota</span>
+                    </a>
+                </li>
+            <?php } ?>
+
+            <?php
+            if ($this->session->userdata('level') == "WTO_VIEW") { ?>
+                <li class="nav-item">
+                    <a class="nav-link " href="<?php echo base_url('dashboard') ?>">
+                        <i class="bi bi-grid"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+
+
+                <li class="nav-heading">Sistem Pendaftaran Calon Anggota</li>
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="<?php echo base_url('data_ca') ?>">
+                        <i class="bi bi-person"></i>
+                        <span>Data Calon Anggota</span>
+                    </a>
+                </li>
+
+            <?php } ?>
+
+            <?php
+
+            if ($this->session->userdata('level') == "CALON_ANGGOTA") { ?>
+
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="<?php echo base_url('form_pendaftaran') ?>">
+                        <i class="bi bi-journal-text"></i>
+                        <span>Formulir Pendaftaran</span>
+                    </a>
+                </li>
+
+
+            <?php } ?>
+
+
+            <!-- End Blank Page Nav -->
+            <!-- <li class="nav-item">
                 <a class="nav-link collapsed" href="">
                     <i class="bi bi-cash"></i>
                     <span>Pembayaran Diklatsar</span>
                 </a>
-            </li><!-- End Blank Page Nav -->
-
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="<?php echo base_url('data_fakultas') ?>">
-                    <i class="bi bi-bank"></i>
-                    <span>Data Fakultas</span>
-                </a>
-            </li><!-- End Blank Page Nav -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="<?php echo base_url('data_prodi') ?>">
-                    <i class="bi bi-bank"></i>
-                    <span>Data Prodi</span>
-                </a>
-            </li><!-- End Blank Page Nav -->
+            </li> -->
+            <!-- End Blank Page Nav -->
 
 
 
 
-            <li class="nav-heading">Setting</li>
+            <?php
+            // jika yang akses adalah admin munculkan menu ini
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="<?php echo base_url('settings') ?>">
-                    <i class="bi bi-gear"></i>
-                    <span>Setting Aplikasi</span>
-                </a>
-            </li><!-- End Blank Page Nav -->
+            if ($this->session->userdata('level') == "WTO_ADMIN") { ?>
 
 
+                <li class="nav-heading">Setting</li>
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="<?php echo base_url('data_user') ?>">
+                        <i class="bi bi-person"></i>
+                        <span>Data User</span>
+                    </a>
+                </li><!-- End Blank Page Nav -->
+
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="<?php echo base_url('data_fakultas') ?>">
+                        <i class="bi bi-bank"></i>
+                        <span>Data Fakultas</span>
+                    </a>
+                </li><!-- End Blank Page Nav -->
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="<?php echo base_url('data_prodi') ?>">
+                        <i class="bi bi-bank"></i>
+                        <span>Data Prodi</span>
+                    </a>
+                </li><!-- End Blank Page Nav -->
+
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="<?php echo base_url('settings') ?>">
+                        <i class="bi bi-gear"></i>
+                        <span>Setting Aplikasi</span>
+                    </a>
+                </li><!-- End Blank Page Nav -->
+
+            <?php } ?>
             <li class="nav-heading">Setting Akun</li>
 
 
