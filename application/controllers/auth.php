@@ -143,7 +143,13 @@ class auth extends CI_Controller
             $this->m_data->insert_data($data, 'data_ca');
             redirect(base_url() . 'Auth');
         } else {
-            $this->load->view('register');
+
+
+            $this->load->view('Auth/header');
+            $this->load->view('Auth/register');
+            $this->load->view('Auth/footer');
+            // redirect('Auth/registration');
+            // $this->load->view('auth/registration');
         }
     }
 
