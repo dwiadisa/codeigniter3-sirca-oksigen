@@ -129,6 +129,7 @@ class auth extends CI_Controller
                 'pengguna_username' => $username,
                 'pengguna_password' => $password,
                 'pengguna_level' => 'CALON_ANGGOTA',
+                'foto_diri' => 'null_foto.jpg',
                 'pengguna_status' => '1'
             );
             $this->m_data->insert_data($data, 'data_ca');
