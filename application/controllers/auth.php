@@ -17,6 +17,14 @@ class auth extends CI_Controller
 
     public function index()
     {
+        // jika ada data session tapi maksa masuk halaman auth maka lempar aja ke halaman yang ada hak aksesnya
+        if ($this->session->userdata('level') == "WTO_ADMIN") {
+            is_login('dashboard');
+        } elseif ($this->session->userdata('level') == "WTO_VIEW") {
+            is_login('dashboard');
+        } elseif ($this->session->userdata('level') == "CALON_ANGGOTA") {
+            is_login('form_pendaftaran');
+        }
 
 
         is_login('dashboard');
