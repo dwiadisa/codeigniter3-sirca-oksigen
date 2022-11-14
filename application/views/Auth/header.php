@@ -16,6 +16,12 @@
 
     <!-- Style -->
     <link rel="stylesheet" href="<?= base_url('assets/assets_login/') ?>css/style.css">
+    <!-- JS CAPTCHA -->
+    <?php
+    echo  $this->recaptcha->getScriptTag();
+    ?>
+
+    <!-- JS CAPTCHA -->
 
     <title><?php echo $title; ?></title>
 </head>

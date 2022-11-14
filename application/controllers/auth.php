@@ -1,4 +1,7 @@
 <?php
+
+use PhpParser\Node\Expr\Isset_;
+
 defined('BASEPATH') or exit('No direct script access allowed');
 
 class Auth extends CI_Controller
@@ -111,6 +114,13 @@ class Auth extends CI_Controller
     }
     public function registration()
     {
+        // fungsi recaptcha google
+        // $captcha['head_captcha'] = $this->recaptcha->getWidget();
+        // $captcha['form_captcha'] = $this->recaptcha->getScriptTag();
+
+        // var_dump($captcha['head_captcha']);
+        // var_dump($captcha['form_captcha']);
+
         $data['title']  = "Register - Sistem Informasi Registrasi Calon Anggota UKM Teater Oksigen";
         $this->load->view('Auth/header', $data);
         $this->load->view('Auth/register');
@@ -125,14 +135,17 @@ class Auth extends CI_Controller
         $this->form_validation->set_rules('username', 'Username Pengguna', 'required|min_length[6]');
         $this->form_validation->set_rules('password', 'Password Pengguna', 'required|min_length[8]',);
         $this->form_validation->set_rules('ulang_password', 'Konfirmasi Password', 'required|matches[password]',);
+        // validasi recaptcha
+        $recaptcha = $this->input->post('g-recaptcha-response');
+        $response = $this->recaptcha->verifyResponse($recaptcha);
+        // validasi recaptcha
 
-        if ($this->form_validation->run() != false) {
+        if ($this->form_validation->run() != false || isset($response['success']) || $response['success'] <> true) {
             $nama = $this->input->post('nama');
             $email = $this->input->post('email');
             $username = $this->input->post('username');
             $password = md5($this->input->post('password'));
-            $ca = "CALON_ANGGOTA";
-            $status = "1";
+
             $data = array(
                 'pengguna_nama' => $nama,
                 'pengguna_email' => $email,
@@ -142,7 +155,12 @@ class Auth extends CI_Controller
                 'foto_diri' => 'null_foto.jpg',
                 'pengguna_status' => '1'
             );
-            $this->m_data->insert_data($data, 'data_ca');
+            // var_dump($recaptcha);
+            // var_dump($response);
+            // var_dump($data);
+
+            $this->M_data->insert_data($data, 'data_ca');
+
             redirect(base_url() . 'Auth');
         } else {
 

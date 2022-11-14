@@ -15,28 +15,32 @@
                         <form action="<?php echo base_url('auth/register_aksi') ?>" method="post">
                             <div class="form-group first">
                                 <label for="username">Username</label>
-                                <input type="username" class="form-control" id="username">
+                                <input type="text" name="username" class="form-control" id="username">
 
                             </div>
                             <div class="form-group first">
                                 <label for="username">Nama</label>
-                                <input type="nama" class="form-control" id="username">
+                                <input type="text" name="nama" class="form-control" id="username">
 
                             </div>
                             <div class="form-group first">
                                 <label for="username">Email</label>
-                                <input type="email" class="form-control" id="email">
+                                <input type="email" name="email" class="form-control" id="email">
 
                             </div>
-                            <div class="form-group last mb-3">
+                            <div class="form-group first">
                                 <label for="password">Password</label>
-                                <input type="password" class="form-control" id="password">
+                                <input type="password" name="password" class="form-control" id="password">
 
                             </div>
-                            <div class="form-group last mb-3">
+                            <div class="form-group first">
                                 <label for="password">Ulangi Password</label>
-                                <input type="ulang_password" class="form-control" id="ulangi passwordpassword">
+                                <input type="password" name="ulang_password" class="form-control" id="ulangi passwordpassword">
 
+                            </div>
+
+                            <div class="form-group last mb-3">
+                                <?php echo $this->recaptcha->getWidget(); ?>
                             </div>
 
                             <input type="submit" value="Register" class="btn btn-block btn-primary">
