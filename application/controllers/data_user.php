@@ -38,7 +38,8 @@ class Data_user extends CI_Controller
 
     public function tambah_user()
     {
-        $this->load->view('templates/header_sidebar');
+        $data['title']  = "Tambah User - Sistem Informasi Registrasi Calon Anggota UKM Teater Oksigen";
+        $this->load->view('templates/header_sidebar', $data);
         $this->load->view('partial/data_user/tambah_user');
         $this->load->view('templates/footer');
     }
