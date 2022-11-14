@@ -14,13 +14,30 @@ Application for recruiting member candidate for "UKM Teater Oksigen UMJ".
 .. you creatively focus on your project by minimizing the amount of code needed
 .. for a given task.
 
+
 *******************
-Release Information
+Tech Stack 
 *******************
+
+- NiceAdmin Bootstrap dashboard theme
+- login form colorlib.com
+- DatatablesJS
+- Codeigniter 3
+- PHP Excel
+- 
+
 
 This repo contains in-development code for future releases. To download the
 latest stable release please visit the `CodeIgniter Downloads
 <https://codeigniter.com/download>`_ page.
+
+.. *******************
+.. Release Information
+.. *******************
+
+.. This repo contains in-development code for future releases. To download the
+.. latest stable release please visit the `CodeIgniter Downloads
+.. <https://codeigniter.com/download>`_ page.
 
 **************************
 Changelog and New Features
