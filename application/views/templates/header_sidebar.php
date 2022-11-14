@@ -59,7 +59,15 @@
     <header id="header" class="header fixed-top d-flex align-items-center">
 
         <div class="d-flex align-items-center justify-content-between">
-            <a href="index.html" class="logo d-flex align-items-center">
+            <a href="<?php
+                        if ($this->session->userdata('level') == "WTO_ADMIN") {
+                            echo base_url('dashboard');
+                        } elseif ($this->session->userdata('level') == "WTO_VIEW") {
+                            echo base_url('dashboard');
+                        } elseif ($this->session->userdata('level') == "CALON_ANGGOTA") {
+                            echo base_url('form_pendaftaran');
+                        }
+                        ?>" class="logo d-flex align-items-center">
                 <img src="<?= base_url('assets_dashboard/') ?>assets/img/logo.png" alt="">
                 <span class="d-none d-lg-block">UKM Teater Oksigen </span>
             </a>
@@ -88,15 +96,18 @@
                             <span><?php echo $this->session->userdata('level') ?></span>
                         </li>
                         <li>
+                        </li>
+                        <?php
+                        if ($this->session->userdata('level') !== "CALON_ANGGOTA") { ?>
                             <hr class="dropdown-divider">
-                        </li>
+                            <li>
+                                <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                                    <i class="bi bi-person"></i>
+                                    <span>My Profile</span>
+                                </a>
+                            </li>
+                        <?php  } ?>
 
-                        <li>
-                            <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                                <i class="bi bi-person"></i>
-                                <span>My Profile</span>
-                            </a>
-                        </li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
