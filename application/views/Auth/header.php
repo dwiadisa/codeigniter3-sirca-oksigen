@@ -17,5 +17,5 @@
     <!-- Style -->
     <link rel="stylesheet" href="<?= base_url('assets/assets_login/') ?>css/style.css">
 
-    <title>Sistem Informasi Pendaftaran Calon Anggota UKM Teater Oksigen UMJ</title>
+    <title><?php echo $title; ?></title>
 </head>

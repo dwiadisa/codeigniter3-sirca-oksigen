@@ -26,11 +26,11 @@ class Data_user extends CI_Controller
     public function index()
     {
 
-
+        $data['title']  = "Data User - Sistem Informasi Registrasi Calon Anggota UKM Teater Oksigen";
         $this->load->model('m_data');
         $data['pengguna'] = $this->m_data->get_data('pengguna')->result();
         // var_dump($data);
-        $this->load->view('templates/header_sidebar');
+        $this->load->view('templates/header_sidebar', $data);
         $this->load->view('partial/data_user/index', $data);
         $this->load->view('templates/footer');
         // $this->load->view('welcome_message');
@@ -78,11 +78,12 @@ class Data_user extends CI_Controller
     }
     public function data_user_edit($id)
     {
+        $data['title']  = "Edit User - Sistem Informasi Registrasi Calon Anggota UKM Teater Oksigen";
         $where = array(
             'id_pengguna' => $id
         );
         $data['pengguna'] = $this->m_data->edit_data($where, 'pengguna')->result();
-        $this->load->view('templates/header_sidebar');
+        $this->load->view('templates/header_sidebar', $data);
         $this->load->view('partial/data_user/edit_user', $data);
         $this->load->view('templates/footer');
     }

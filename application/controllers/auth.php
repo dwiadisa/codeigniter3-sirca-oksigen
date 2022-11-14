@@ -17,6 +17,7 @@ class Auth extends CI_Controller
 
     public function index()
     {
+        $data['title']  = "Login - Sistem Informasi Registrasi Calon Anggota UKM Teater Oksigen";
         // jika ada data session tapi maksa masuk halaman auth maka lempar aja ke halaman yang ada hak aksesnya
         if ($this->session->userdata('level') == "WTO_ADMIN") {
             is_login('dashboard');
@@ -28,8 +29,8 @@ class Auth extends CI_Controller
 
 
         is_login('dashboard');
-        // $data = ['title'];
-        $this->load->view('Auth/header');
+
+        $this->load->view('Auth/header', $data);
         $this->load->view('Auth/index');
         $this->load->view('Auth/footer');
     }
@@ -110,7 +111,8 @@ class Auth extends CI_Controller
     }
     public function registration()
     {
-        $this->load->view('Auth/header');
+        $data['title']  = "Register - Sistem Informasi Registrasi Calon Anggota UKM Teater Oksigen";
+        $this->load->view('Auth/header', $data);
         $this->load->view('Auth/register');
         $this->load->view('Auth/footer');
     }

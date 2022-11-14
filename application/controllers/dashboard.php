@@ -24,7 +24,9 @@ class Dashboard extends CI_Controller
 
     public function index()
     {
-
+        // simpan data judul
+        $data['title']  = "Dashboard - Sistem Informasi Registrasi Calon Anggota UKM Teater Oksigen";
+        // simpan data judul
         // hitung jumlah ca yang terdaftar di divisi-divisi
 
         // hitung jumlah CA terdaftar dan user admin yang terdaftar
@@ -44,7 +46,7 @@ class Dashboard extends CI_Controller
 
         // hitung jumlah ca yang terdaftar di divisi-divisi
 
-        $this->load->view('templates/header_sidebar');
+        $this->load->view('templates/header_sidebar', $data);
         $this->load->view('partial/dashboard', $data);
         $this->load->view('templates/footer');
         // $this->load->view('test_login');

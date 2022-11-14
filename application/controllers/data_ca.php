@@ -35,6 +35,8 @@ class Data_ca extends CI_Controller
 
     public function index()
     {
+        // simpan data judul
+        $data['title']  = "Data CA - Sistem Informasi Registrasi Calon Anggota UKM Teater Oksigen";
         $data['pengguna'] = $this->db->query("SELECT * FROM data_ca, data_prodi, data_fakultas WHERE data_ca.fakultas = id_fakultas and data_ca.prodi=id_prodi")->result();
 
         // $data['prodi_fakultas'] = $this->m_data->relasi_prodi();
@@ -42,15 +44,16 @@ class Data_ca extends CI_Controller
         // var_dump($data['prodi_dan_fakultas']);
         $this->load->model('m_data');
         // $data['pengguna'] = $this->m_data->get_data('data_ca')->result();
-        $this->load->view('templates/header_sidebar');
+        $this->load->view('templates/header_sidebar', $data);
         $this->load->view('partial/data_ca/index', $data);
         $this->load->view('templates/footer');
         // $this->load->view('welcome_message');
     }
     public function tambah_ca()
     {
+        $data['title']  = "Tambah CA - Sistem Informasi Registrasi Calon Anggota UKM Teater Oksigen";
         $data['fakultas'] =  $this->akademik->get_fakultas();
-        $this->load->view('templates/header_sidebar');
+        $this->load->view('templates/header_sidebar', $data);
         $this->load->view('partial/data_ca/tambah_ca', $data);
         $this->load->view('templates/footer');
     }
@@ -257,19 +260,19 @@ class Data_ca extends CI_Controller
 
     public function lihat_ca($id)
     {
-
+        $data['title']  = "Lihat Data CA - Sistem Informasi Registrasi Calon Anggota UKM Teater Oksigen";
         $where = array(
             'id_ca' => $id
         );
         $data['calon_anggota'] = $this->m_data->edit_data($where, 'data_ca')->result();
 
-        $this->load->view('templates/header_sidebar');
+        $this->load->view('templates/header_sidebar', $data);
         $this->load->view('partial/data_ca/lihat_ca', $data);
         $this->load->view('templates/footer');
     }
     public function ubah_ca($id)
     {
-
+        $data['title']  = "Ubah Data CA - Sistem Informasi Registrasi Calon Anggota UKM Teater Oksigen";
         $where = array(
             'id_ca' => $id
         );
@@ -279,7 +282,7 @@ class Data_ca extends CI_Controller
         $data['calon_anggota'] = $this->m_data->edit_data($where, 'data_ca')->result();
         // load model pada database untuk form ubah
 
-        $this->load->view('templates/header_sidebar');
+        $this->load->view('templates/header_sidebar', $data);
         $this->load->view('partial/data_ca/edit_ca', $data);
         $this->load->view('templates/footer');
     }

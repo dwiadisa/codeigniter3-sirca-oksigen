@@ -22,15 +22,17 @@ class Data_fakultas extends CI_Controller
 
     public function index()
     {
+        $data['title']  = "Data Fakultas - Sistem Informasi Registrasi Calon Anggota UKM Teater Oksigen";
         $data['fakultas'] = $this->m_data->get_data('data_fakultas')->result();
-        $this->load->view('templates/header_sidebar');
+        $this->load->view('templates/header_sidebar', $data);
         $this->load->view('partial/data_fakultas/index', $data);
         $this->load->view('templates/footer');
     }
 
     public function tambah_fakultas()
     {
-        $this->load->view('templates/header_sidebar');
+        $data['title']  = "Tambah Fakultas - Sistem Informasi Registrasi Calon Anggota UKM Teater Oksigen";
+        $this->load->view('templates/header_sidebar', $data);
         $this->load->view('partial/data_fakultas/tambah_fakultas');
         $this->load->view('templates/footer');
     }
@@ -63,12 +65,12 @@ class Data_fakultas extends CI_Controller
     }
     public function edit_fakultas($id)
     {
-
+        $data['title']  = "Edit Fakultas - Sistem Informasi Registrasi Calon Anggota UKM Teater Oksigen";
         $where = array(
             'id_fakultas' => $id
         );
         $data["fakultas"] = $this->m_data->edit_data($where, 'data_fakultas')->result();
-        $this->load->view('templates/header_sidebar');
+        $this->load->view('templates/header_sidebar', $data);
         $this->load->view('partial/data_fakultas/edit_fakultas', $data);
         $this->load->view('templates/footer');
     }

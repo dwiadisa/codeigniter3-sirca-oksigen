@@ -27,6 +27,7 @@ class Form_pendaftaran extends CI_Controller
     }
     public function index()
     {
+        $data['title']  = "Formulir Pendaftaran CA - Sistem Informasi Registrasi Calon Anggota UKM Teater Oksigen";
 
         $where = array(
             'id_ca' => $this->session->userdata('id')
@@ -37,7 +38,7 @@ class Form_pendaftaran extends CI_Controller
         $data['calon_anggota'] = $this->m_data->edit_data($where, 'data_ca')->result();
         // load model pada database untuk form ubah
 
-        $this->load->view('templates/header_sidebar');
+        $this->load->view('templates/header_sidebar', $data);
         $this->load->view('partial/formulir_pendaftaran/formulir_pendaftaran', $data);
         $this->load->view('templates/footer');
     }

@@ -23,8 +23,9 @@ class Data_prodi extends CI_Controller
 
     public function index()
     {
+        $data['title']  = "Data Prodi - Sistem Informasi Registrasi Calon Anggota UKM Teater Oksigen";
         $data['prodi'] = $this->m_data->relasi_prodi();
-        $this->load->view('templates/header_sidebar');
+        $this->load->view('templates/header_sidebar', $data);
         $this->load->view('partial/data_prodi/index', $data);
         $this->load->view('templates/footer');
     }
@@ -32,8 +33,9 @@ class Data_prodi extends CI_Controller
 
     public function tambah_prodi()
     {
+        $data['title']  = "Tambah Prodi - Sistem Informasi Registrasi Calon Anggota UKM Teater Oksigen";
         $data['fakultas'] = $this->m_data->get_data('data_fakultas')->result();
-        $this->load->view('templates/header_sidebar');
+        $this->load->view('templates/header_sidebar', $data);
         $this->load->view('partial/data_prodi/tambah_prodi', $data);
         $this->load->view('templates/footer');
     }
@@ -64,13 +66,14 @@ class Data_prodi extends CI_Controller
 
     public function edit_prodi($id)
     {
+        $data['title']  = "Edit Prodi - Sistem Informasi Registrasi Calon Anggota UKM Teater Oksigen";
 
         $where = array(
             'id_prodi' => $id
         );
         $data['prodi'] = $this->m_data->edit_data($where, 'data_prodi')->result();
         $data['fakultas'] = $this->m_data->get_data('data_fakultas')->result();
-        $this->load->view('templates/header_sidebar');
+        $this->load->view('templates/header_sidebar', $data);
         $this->load->view('partial/data_prodi/edit_prodi', $data);
         $this->load->view('templates/footer');
     }
