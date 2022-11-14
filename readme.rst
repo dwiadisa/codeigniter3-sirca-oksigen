@@ -3,7 +3,7 @@ SISTEM INFORMASI REGISTRASI CALON ANGGOTA UKM TEATER OKSIGEN
 ###################
 
 
-Sistem informasi Registrasi Calon Anggota UKM Teater Oksigen UMJ is an 
+_Sistem informasi Registrasi Calon Anggota UKM Teater Oksigen UMJ_ is an 
 Application for recruiting member candidate for "UKM Teater Oksigen UMJ".
  
 .. CodeIgniter is an Application Development Framework - a toolkit - for people
