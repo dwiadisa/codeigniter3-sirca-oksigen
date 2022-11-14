@@ -24,12 +24,12 @@ Tech Stack
 - DatatablesJS
 - Codeigniter 3
 - PHP Excel
-- 
+- Font Awesome Icons
+- Bootstrap 5.x
 
 
-This repo contains in-development code for future releases. To download the
-latest stable release please visit the `CodeIgniter Downloads
-<https://codeigniter.com/download>`_ page.
+
+
 
 .. *******************
 .. Release Information
