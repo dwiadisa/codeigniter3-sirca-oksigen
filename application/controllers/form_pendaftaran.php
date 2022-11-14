@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class form_pendaftaran extends CI_Controller
+class Form_pendaftaran extends CI_Controller
 {
 
     // controller ini dikhususkan untuk hak akses CA bukan untuk admin

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class dropdown extends CI_Controller
+class Dropdown extends CI_Controller
 {
     function __construct()
     {

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class data_user extends CI_Controller
+class Data_user extends CI_Controller
 {
 
 

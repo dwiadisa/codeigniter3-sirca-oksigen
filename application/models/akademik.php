@@ -1,5 +1,5 @@
 <?php
-class akademik extends CI_Model
+class Akademik extends CI_Model
 {
     function get_fakultas()
     {

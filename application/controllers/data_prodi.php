@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class data_prodi extends CI_Controller
+class Data_prodi extends CI_Controller
 {
 
     function __construct()
