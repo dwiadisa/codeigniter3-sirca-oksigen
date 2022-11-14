@@ -4,9 +4,8 @@
 
 
 
-
     <div class="d-lg-flex half">
-        <div class="bg order-1 order-md-2" style="background-image: url('<?= base_url('assets/assets_login/') ?>images/bg_1.jpg');"></div>
+        <div class="bg order-1 order-md-2" style="background-image: url('<?= base_url('assets/img/') ?>website_banner.png');"></div>
         <div class="contents order-2 order-md-1">
 
             <div class="container">
@@ -62,14 +61,14 @@
                                 <input type="password" class="form-control" name="password" id="password">
 
                             </div>
-
-                            <div class="d-flex mb-5 align-items-center">
-                                <label class="control control--checkbox mb-0"><span class="caption">Remember me</span>
+                            <!-- 
+                            <div class="d-flex mb-5 align-items-center"> -->
+                            <!-- <label class="control control--checkbox mb-0"><span class="caption">Remember me</span>
                                     <input type="checkbox" />
                                     <div class="control__indicator"></div>
-                                </label>
-                                <span class="ml-auto"><a href="#" class="forgot-pass">Lupa Password</a></span>
-                            </div>
+                                </label> -->
+                            <!-- <span class="ml-auto"><a href="#" class="forgot-pass">Lupa Password</a></span>
+                            </div> -->
                             <!-- <a class="btn btn-primary" href="#" role="button">Link</a> -->
                             <input type="submit" href="" value="Login" role="button" class="btn btn-block btn-primary">
 
@@ -78,7 +77,7 @@
 
                         </form>
                         <a class="btn btn-block btn-primary text-light text-wrap fw-bold" href="<?= base_url('auth/registration') ?>" role="button">Register</a>
-                        <span class="ml-auto"><a href="#" class="forgot-pass">Forgot Password</a></span>
+
                     </div>
                 </div>
             </div>
