@@ -121,6 +121,15 @@ class Auth extends CI_Controller
         // var_dump($captcha['head_captcha']);
         // var_dump($captcha['form_captcha']);
 
+        // jika ada data session tapi maksa masuk halaman auth maka lempar aja ke halaman yang ada hak aksesnya
+        if ($this->session->userdata('level') == "WTO_ADMIN") {
+            is_login('dashboard');
+        } elseif ($this->session->userdata('level') == "WTO_VIEW") {
+            is_login('dashboard');
+        } elseif ($this->session->userdata('level') == "CALON_ANGGOTA") {
+            is_login('form_pendaftaran');
+        }
+
         $data['title']  = "Register - Sistem Informasi Registrasi Calon Anggota UKM Teater Oksigen";
         $this->load->view('Auth/header', $data);
         $this->load->view('Auth/register');
