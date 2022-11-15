@@ -26,6 +26,8 @@ Tech Stack
 - PHP Excel
 - Font Awesome Icons
 - Bootstrap 5.x
+- DomPDF
+- JQuery
 
 
 
