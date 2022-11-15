@@ -42,6 +42,14 @@
                                               Anda Sudah Logout
                                                </div> ";
                                 // echo "kamu udah logout";
+                            } else if ($_GET['alert'] == "registersuccess") {
+                                echo "<div class='alert alert-success alert-dismissible' role='alert'>
+                                                <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                                                <span aria-hidden='true'>×</span>
+                                                </button>
+                                             Registrasi akun berhasil silakan login
+                                               </div> ";
+                                // echo "kamu udah logout";
                             }
                         }
                         ?>

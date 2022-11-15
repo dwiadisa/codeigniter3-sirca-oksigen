@@ -107,9 +107,10 @@ class Auth extends CI_Controller
                 redirect(base_url() . 'auth?alert=gagal');
             }
         } else {
-            $this->load->view('Auth/header');
-            $this->load->view('Auth/index');
-            $this->load->view('Auth/footer');
+            redirect(base_url() . 'auth?alert=gagal');
+            // $this->load->view('Auth/header');
+            // $this->load->view('Auth/index');
+            // $this->load->view('Auth/footer');
         }
     }
     public function registration()
@@ -140,8 +141,8 @@ class Auth extends CI_Controller
     public function register_aksi()
     {
         $this->form_validation->set_rules('nama', 'Nama Pengguna', 'required');
-        $this->form_validation->set_rules('email', 'Email Pengguna', 'required');
-        $this->form_validation->set_rules('username', 'Username Pengguna', 'required|min_length[6]');
+        $this->form_validation->set_rules('email', 'Email Pengguna', 'required|is_unique[data_ca.pengguna_email]');
+        $this->form_validation->set_rules('username', 'Username Pengguna', 'required|is_unique[data_ca.pengguna_username]|min_length[6]');
         $this->form_validation->set_rules('password', 'Password Pengguna', 'required|min_length[8]',);
         $this->form_validation->set_rules('ulang_password', 'Konfirmasi Password', 'required|matches[password]',);
         // validasi recaptcha
@@ -149,7 +150,13 @@ class Auth extends CI_Controller
         $response = $this->recaptcha->verifyResponse($recaptcha);
         // validasi recaptcha
 
-        if ($this->form_validation->run() != false || isset($response['success']) || $response['success'] <> true) {
+
+        if (
+            $this->form_validation->run() != false  &&
+            isset($response['success']) &&
+            $response['success']
+        ) {
+
             $nama = $this->input->post('nama');
             $email = $this->input->post('email');
             $username = $this->input->post('username');
@@ -170,14 +177,14 @@ class Auth extends CI_Controller
 
             $this->M_data->insert_data($data, 'data_ca');
 
-            redirect(base_url() . 'Auth');
+            redirect(base_url() . 'auth?alert=registersuccess');
         } else {
 
 
-            $this->load->view('Auth/header');
-            $this->load->view('Auth/register');
-            $this->load->view('Auth/footer');
-            // redirect('Auth/registration');
+            // $this->load->view('Auth/header');
+            // $this->load->view('Auth/register');
+            // $this->load->view('Auth/footer');
+            redirect('Auth/registration');
             // $this->load->view('auth/registration');
         }
     }

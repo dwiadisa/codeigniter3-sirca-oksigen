@@ -16,22 +16,30 @@
                             <div class="form-group first">
                                 <label for="username">Username</label>
                                 <input type="text" name="username" class="form-control" id="username">
-
+                                <small class="text-danger">
+                                    <?php echo
+                                    form_error('username'); ?> </small>
                             </div>
                             <div class="form-group first">
                                 <label for="username">Nama</label>
                                 <input type="text" name="nama" class="form-control" id="username">
-
+                                <small class="text-danger">
+                                    <?php echo
+                                    form_error('nama'); ?> </small>
                             </div>
                             <div class="form-group first">
                                 <label for="username">Email</label>
                                 <input type="email" name="email" class="form-control" id="email">
-
+                                <small class="text-danger">
+                                    <?php echo
+                                    form_error('email'); ?> </small>
                             </div>
                             <div class="form-group first">
                                 <label for="password">Password</label>
                                 <input type="password" name="password" class="form-control" id="password">
-
+                                <small class="text-danger">
+                                    <?php echo
+                                    form_error('password'); ?> </small>
                             </div>
                             <div class="form-group first">
                                 <label for="password">Ulangi Password</label>
