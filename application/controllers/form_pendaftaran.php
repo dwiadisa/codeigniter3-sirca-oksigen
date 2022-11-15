@@ -160,10 +160,16 @@ class Form_pendaftaran extends CI_Controller
                 // die;
                 // $foto_diri = $this->upload->data();
             }
-
+            // format ID CA
+            $cato_ = "CATO";
+            $date = date("Y");
+            $cato = $cato_ . "-"  . $date . "-" . $nim;
+            // format ID CA
 
             if ($this->input->post('password') == "") {
+
                 $data = array(
+                    'no_induk_ca' => $cato,
                     'pengguna_username' => $username,
                     'pengguna_nama' => $nama,
                     'pengguna_email' => $email,
@@ -193,6 +199,7 @@ class Form_pendaftaran extends CI_Controller
             } else {
 
                 $data = array(
+                    'no_induk_ca' => $cato,
                     'pengguna_username' => $username,
                     'pengguna_nama' => $nama,
                     'pengguna_password' => $password,
@@ -231,19 +238,22 @@ class Form_pendaftaran extends CI_Controller
 
             // var_dump($data);
         } else {
-            $id = $this->session->userdata('id');
-            $where = array(
-                'id_ca' => $id
-            );
-            // load model pada database untuk form ubah
-            $data['fakultas'] =  $this->akademik->get_fakultas();
-            // $data['prodi'] = $this->m_data->get_data('data_prodi')->result();
-            $data['calon_anggota'] = $this->m_data->edit_data($where, 'data_ca')->result();
-            // load model pada database untuk form ubah
 
-            $this->load->view('templates/header_sidebar');
-            $this->load->view('partial/formulir_pendaftaran/formulir_pendaftaran', $data);
-            $this->load->view('templates/footer');
+            echo "data gagal masuk";
+            // $data['title']  = "Formulir Pendaftaran CA - Sistem Informasi Registrasi Calon Anggota UKM Teater Oksigen";
+            // $id = $this->session->userdata('id');
+            // $where = array(
+            //     'id_ca' => $id
+            // );
+            // // load model pada database untuk form ubah
+            // $data['fakultas'] =  $this->akademik->get_fakultas();
+            // // $data['prodi'] = $this->m_data->get_data('data_prodi')->result();
+            // $data['calon_anggota'] = $this->m_data->edit_data($where, 'data_ca')->result();
+            // // load model pada database untuk form ubah
+
+            // $this->load->view('templates/header_sidebar', $data);
+            // $this->load->view('partial/formulir_pendaftaran/formulir_pendaftaran', $data);
+            // $this->load->view('templates/footer');
         }
     }
     public function print()

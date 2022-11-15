@@ -286,8 +286,8 @@
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="pages-blank.html">
-                    <i class="bi bi-pencil-square"></i>
-                    <span>Ganti Password</span>
+                    <i class="bi bi-person-badge-fill"></i>
+                    <span>My Profile</span>
                 </a>
             </li><!-- End Blank Page Nav -->
 

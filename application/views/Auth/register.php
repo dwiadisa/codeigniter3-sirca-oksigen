@@ -46,7 +46,9 @@
                                 <input type="password" name="ulang_password" class="form-control" id="ulangi passwordpassword">
 
                             </div>
-
+                            <small>
+                                dengan membuat akun anda patuh dengan syarat dan ketentuan di UKM Teater Oksigen UMJ
+                            </small>
                             <div class="form-group last mb-3">
                                 <?php echo $this->recaptcha->getWidget(); ?>
                             </div>

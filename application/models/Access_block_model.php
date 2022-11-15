@@ -6,13 +6,13 @@
         public function admin()
         {
             if ($this->session->userdata('level') !== "WTO_ADMIN") {
-                redirect('auth/403');
+                redirect('Akses_terblokir/blokir_403');
             }
         }
         public function ca()
         {
             if ($this->session->userdata('level') !== "CALON_ANGGOTA") {
-                redirect('auth/403');
+                redirect('Akses_terblokir/blokir_403');
             }
         }
 
@@ -20,7 +20,7 @@
         {
 
             if ($this->session->userdata('level') == "WTO_VIEW") {
-                redirect('auth/403');
+                redirect('Akses_terblokir/blokir_403');
             }
         }
 
@@ -28,7 +28,7 @@
         public function ca_akses()
         {
             if ($this->session->userdata('level') == "CALON_ANGGOTA") {
-                redirect('auth/403');
+                redirect('Akses_terblokir/blokir_403');
             }
         }
     }
