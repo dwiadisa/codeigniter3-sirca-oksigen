@@ -47,9 +47,9 @@
                                 <td>
 
                                     <?php
-                                    if ($p->id_prodi != NULL) {
+                                    if ($p->id_prodi !== NULL) {
                                         echo $p->nama_prodi;
-                                    } elseif ($p->id_prodi = "") {
+                                    } elseif ($p->id_prodi == "") {
                                         echo "nama prodi tidak valid";
                                     } else {
                                         echo "nama prodi tidak valid";

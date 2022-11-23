@@ -72,6 +72,7 @@ class Auth extends CI_Controller
                     'level' => $data->pengguna_level,
                     'email' => $data->pengguna_email,
                     'status' => 'telah_login',
+                    'foto_profil' => $data->pengguna_foto,
 
                 );
                 $this->session->set_userdata($data_session);
@@ -93,6 +94,7 @@ class Auth extends CI_Controller
                     'level' => $data->pengguna_level,
                     'email' => $data->pengguna_email,
                     'status' => 'telah_login',
+                    'foto_profil' => $data->foto_diri,
 
                 );
                 $this->session->set_userdata($data_session);

@@ -86,7 +86,16 @@
                 <li class="nav-item dropdown pe-3">
 
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                        <img src="<?= base_url('assets_dashboard/') ?>assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+                        <img src="<?php
+                                    // var_dump($this->session->userdata('foto_diri'));
+                                    if ($this->session->userdata('level') == "WTO_ADMIN") {
+                                        echo base_url('upload/foto_admin/') . $this->session->userdata('foto_profil');
+                                    } elseif ($this->session->userdata('level') == "WTO_VIEW") {
+                                        echo base_url('upload/foto_admin/') . $this->session->userdata('foto_profil');
+                                    } elseif ($this->session->userdata('level') == "CALON_ANGGOTA") {
+                                        echo base_url('upload/foto_ca/') . $this->session->userdata('foto_profil');
+                                    }
+                                    ?>" alt="Profile" class="rounded-circle">
                         <span class="d-none d-md-block dropdown-toggle ps-2"> <?php echo $this->session->userdata('nama') ?> |<?php echo $this->session->userdata('username') ?></span>
                     </a><!-- End Profile Iamge Icon -->
 
@@ -193,6 +202,12 @@
                         <span>Data Calon Anggota</span>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="<?php echo base_url('Ekspor_CA'); ?> ">
+                        <i class="bi bi-box-arrow-down"></i>
+                        <span>Ekspor Data Calon Anggota</span>
+                    </a>
+                </li>
             <?php } ?>
 
             <?php
@@ -213,6 +228,14 @@
                         <span>Data Calon Anggota</span>
                     </a>
                 </li>
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="<?php echo base_url('Ekspor_CA'); ?> ">
+                        <i class="bi bi-box-arrow-down"></i>
+                        <span>Ekspor Data Calon Anggota</span>
+                    </a>
+                </li>
+
 
             <?php } ?>
 

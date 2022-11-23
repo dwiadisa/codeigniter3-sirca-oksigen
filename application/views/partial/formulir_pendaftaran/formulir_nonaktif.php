@@ -13,7 +13,7 @@
                 <h5 class="card-title"></h5>
                 <div class="alert alert-danger" role="alert">
                     SALAM BUDAYA !!! <br>
-                    Mohon maaf pendaftaran calon anggota telah ditutup. Terimakasih telah mendaftar. untuk selanjutnya, pendaftaran Pendidikan dan Latihan Dasar telah dibuka <br>
+                    Mohon maaf pendaftaran calon anggota telah ditutup. Terimakasih telah mendaftar.<br>
                     untuk info selanjutnya anda dapat mengunjungi di UKM Center Lt 2 mengenai Pendidikan dan Latihan Dasar
                 </div>
             </div>

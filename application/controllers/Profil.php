@@ -1,7 +1,7 @@
 <?php 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Ganti_password extends CI_Controller {
+class Profil extends CI_Controller {
 
     public function __construct()
     {
@@ -14,4 +14,4 @@ class Ganti_password extends CI_Controller {
     }
 }
 
-/* End of file Ganti_password.php and path \application\controllers\Ganti_password.php */
+/* End of file Profil.php and path \application\controllers\Profil.php */

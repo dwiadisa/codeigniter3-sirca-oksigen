@@ -195,7 +195,7 @@ class Form_pendaftaran extends CI_Controller
                     if ($this->input->post('password') == "") {
 
                         $data = array(
-                            'no_induk_ca' => $cato,
+                            'no_induk_CA' => $cato,
                             'pengguna_username' => $username,
                             'pengguna_nama' => $nama,
                             'pengguna_email' => $email,
@@ -221,11 +221,12 @@ class Form_pendaftaran extends CI_Controller
                             'foto_ktm' => "null_ktm.png",
                             'foto_diri' => $foto_diri,
                             'tanggal_submit' => date("Y-m-d"),
+                            'tahun_submit' => date("Y"),
                         );
                     } else {
 
                         $data = array(
-                            'no_induk_ca' => $cato,
+                            'no_induk_CA' => $cato,
                             'pengguna_username' => $username,
                             'pengguna_nama' => $nama,
                             'pengguna_password' => $password,
@@ -252,6 +253,7 @@ class Form_pendaftaran extends CI_Controller
                             'foto_ktm' => "null_ktm.png",
                             'foto_diri' => $foto_diri,
                             'tanggal_submit' => date("Y-m-d"),
+                            'tahun_submit' => date("Y"),
                         );
                     }
                     $where = array(

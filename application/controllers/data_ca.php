@@ -187,7 +187,7 @@ class Data_ca extends CI_Controller
             $cato = $cato_ . "-"  . $date . "-" . $nim;
             // format ID CA
             $data = array(
-                'no_induk_ca' => $cato,
+                'no_induk_CA' => $cato,
                 'pengguna_username' => $username,
                 'pengguna_nama' => $nama,
                 'pengguna_password' => $password,
@@ -214,6 +214,7 @@ class Data_ca extends CI_Controller
                 'foto_ktm' => "null_ktm.png",
                 'foto_diri' => $foto_diri,
                 'tanggal_submit' => date("Y-m-d"),
+                'tahun_submit' => date("Y"),
 
             );
             $this->m_data->insert_data($data, 'data_ca');
@@ -406,9 +407,14 @@ class Data_ca extends CI_Controller
                 // $foto_diri = $this->upload->data();
             }
 
+            // format ID CA
 
+            $cato_ = "CATO";
+            $date = date("Y");
+            $cato = $cato_ . "-"  . $date . "-" . $nim;
             if ($this->input->post('password') == "") {
                 $data = array(
+                    'no_induk_CA' => $cato,
                     'pengguna_username' => $username,
                     'pengguna_nama' => $nama,
                     'pengguna_email' => $email,
@@ -434,10 +440,12 @@ class Data_ca extends CI_Controller
                     'foto_ktm' => "null_ktm.png",
                     'foto_diri' => $foto_diri,
                     'tanggal_submit' => date("Y-m-d"),
+                    'tahun_submit' => date("Y"),
                 );
             } else {
 
                 $data = array(
+                    'no_induk_CA' => $cato,
                     'pengguna_username' => $username,
                     'pengguna_nama' => $nama,
                     'pengguna_password' => $password,
@@ -464,6 +472,7 @@ class Data_ca extends CI_Controller
                     'foto_ktm' => "null_ktm.png",
                     'foto_diri' => $foto_diri,
                     'tanggal_submit' => date("Y-m-d"),
+                    'tahun_submit' => date("Y"),
                 );
             }
             $where = array(
@@ -726,6 +735,7 @@ class Data_ca extends CI_Controller
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
         header('Content-Disposition: attachment; filename="Data calon anggota UKM Teater OKsigen.xlsx"'); // Set nama file excel nya
         header('Cache-Control: max-age=0');
+        ob_end_clean();
         $write = PHPExcel_IOFactory::createWriter($excel, 'Excel2007');
         $write->save('php://output');
     }

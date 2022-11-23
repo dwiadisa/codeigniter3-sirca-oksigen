@@ -34,6 +34,7 @@
 
 
                             </select>
+                            <small>digunakan untuk menonaktifkan fungsi pengisian formulir calon anggota</small>
                         </div>
                         <button type="submit" class="btn btn-primary mt-3">Set Status Pendaftaran</button>
                     </div>

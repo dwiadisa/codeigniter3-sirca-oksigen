@@ -16,6 +16,7 @@
                     <thead>
                         <tr>
                             <th scope="col">No.</th>
+                            <th scope="col">Foto Profil</th>
                             <th scope="col">Nama</th>
                             <th scope="col">Email</th>
                             <th scope="col">Username</th>
@@ -31,6 +32,10 @@
 
                             <tr>
                                 <td><?php echo $no++ ?></td>
+                                <td>
+                                    <img src="<?php echo base_url('upload/foto_admin/');
+                                                echo $p->pengguna_foto; ?>" width="55px" alt="" srcset="">
+                                </td>
                                 <td><?php echo $p->pengguna_nama; ?></td>
                                 <td><?php echo $p->pengguna_email; ?></td>
                                 <td><?php echo $p->pengguna_username; ?></td>

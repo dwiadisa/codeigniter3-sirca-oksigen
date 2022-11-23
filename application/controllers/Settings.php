@@ -28,7 +28,6 @@ class Settings extends CI_Controller
         // query update setting
 
         $this->db->query("UPDATE `setting` SET `value` = '$simpan' WHERE `setting`.`id_setting` = 0;");
-        echo "";
         redirect('Settings');
 
         // query update setting
