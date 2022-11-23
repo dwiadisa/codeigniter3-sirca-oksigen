@@ -35,6 +35,13 @@ class Settings extends CI_Controller
         // var_dump($cek);
         // echo $cek;
     }
+
+    public function backup_database()
+    {
+    }
+    public function hapus_seluruh_data_ca()
+    {
+    }
 }
 
 /* End of file Settings.php and path \application\controllers\Settings.php */

@@ -12,7 +12,7 @@
                 <form action="<?php echo base_url('Settings/simpan_setting') ?>" method="post">
                     <div class="row mb-3">
                         <label class="col-sm-2 col-form-label">Set Status</label>
-                        <div class="col-sm-10">
+                        <div class="col">
                             <select class="form-select" name="setting" aria-label="Default select example">
                                 <?php
                                 foreach ($setting as $set) {
@@ -32,15 +32,30 @@
 
                                 ?>
 
-
                             </select>
                             <small>digunakan untuk menonaktifkan fungsi pengisian formulir calon anggota</small>
                         </div>
-                        <button type="submit" class="btn btn-primary mt-3">Set Status Pendaftaran</button>
+
+                        <button type="submit" class="btn btn-primary mb-3">Set Status Pendaftaran</button>
+
                     </div>
                 </form>
-
+                <h5 class="card-title">Opsi Lain</h5>
+                <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label">Backup Database Aplikasi</label>
+                    <div class="col-sm-10">
+                        <a href="#" button type="submit" class="btn btn-primary">Backup Database</a>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label text-danger">Hapus Semua Data Calon Anggota</label>
+                    <div class="col-sm-10">
+                        <a href="#" button type="submit" class="btn btn-danger">Hapus Semua Data</a>
+                    </div>
+                </div>
             </div>
+
+
         </div>
         </div>
 

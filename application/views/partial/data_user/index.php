@@ -49,7 +49,8 @@
                                     } ?></td>
                                 <td>
                                     <a href="<?php echo base_url() . 'data_user/data_user_edit/' . $p->id_pengguna; ?>" class="btn btn-success btn-sm"> <i class="bi bi-pencil"></i> </a>
-                                    <a href="<?php echo base_url() . 'data_user/data_user_hapus/' . $p->id_pengguna; ?>" class="btn btn-danger btn-sm"> <i class="bi bi-x-square-fill"></i> </a>
+                                    <a href="javascript:void(0);" onclick="hapus(<?php echo  $p->id_pengguna; ?>);" class="btn btn-danger btn-sm"> <i class="fa fa-trash"></i> </a>
+
 
                                 </td>
 
@@ -64,6 +65,20 @@
                 </table>
             </div>
         </div>
+        <!-- kotak konfirmasi untuk delete user -->
+
+        <script type="text/javascript">
+            var url = "<?php echo base_url(); ?>";
+
+            function hapus(id) {
+                var r = confirm("Apakah Anda yakin menghapus Data User Ini")
+                if (r == true)
+                    window.location = url + "data_user/data_user_hapus/" + id;
+                else
+                    return false;
+            }
+        </script>
+        <!-- kotak konfirmasi untuk delete user -->
     </section>
 
 </main><!-- End #main -->

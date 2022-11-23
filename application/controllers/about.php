@@ -16,7 +16,8 @@ class About extends CI_Controller
 
     public function index()
     {
-        $this->load->view('templates/header_sidebar');
+        $data["title"] = "About - Sistem Informasi Pendaftaran Calon Anggota UKM Teater Oksigen";
+        $this->load->view('templates/header_sidebar', $data);
         $this->load->view('partial/about');
         $this->load->view('templates/footer');
     }
