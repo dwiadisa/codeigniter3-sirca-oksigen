@@ -44,13 +44,13 @@
                 <div class="row mb-3">
                     <label class="col-sm-2 col-form-label">Backup Database Aplikasi</label>
                     <div class="col-sm-10">
-                        <a href="#" button type="submit" class="btn btn-primary">Backup Database</a>
+                        <a href="#" button type="button" class="btn btn-primary" disabled>Backup Database</a>
                     </div>
                 </div>
                 <div class="row mb-3">
                     <label class="col-sm-2 col-form-label text-danger">Hapus Semua Data Calon Anggota</label>
                     <div class="col-sm-10">
-                        <a href="#" button type="submit" class="btn btn-danger">Hapus Semua Data</a>
+                        <a href="#" button type="button" class="btn btn-danger" disabled>Hapus Semua Data</a>
                     </div>
                 </div>
             </div>
