@@ -44,15 +44,24 @@
                 <div class="row mb-3">
                     <label class="col-sm-2 col-form-label">Backup Database Aplikasi</label>
                     <div class="col-sm-10">
-                        <a href="#" button type="button" class="btn btn-primary" disabled>Backup Database</a>
+                        <a href="<?php echo base_url('Settings/backup_database'); ?>" button type="button" class="btn btn-primary">Backup Database</a>
+                        <small>klik disini untuk backup database ke format .sql</small>
                     </div>
-                </div>
-                <div class="row mb-3">
-                    <label class="col-sm-2 col-form-label text-danger">Hapus Semua Data Calon Anggota</label>
-                    <div class="col-sm-10">
-                        <a href="#" button type="button" class="btn btn-danger" disabled>Hapus Semua Data</a>
+                    <div class="alert alert-danger" role="alert">
+                        <div class="row mb-3">
+                            <label class="col-sm-2 col-form-label text-danger">Hapus Semua Data Calon Anggota</label>
+                            <div class="col-sm-10">
+                                <a href="<?php echo base_url('Settings/hapus_seluruh_data_ca'); ?>" onclick="return confirm('PERHATIAN !!! Tindakan ini tidak dapat diurungkan. apakah anda yakin untuk menghapus semua data Calon Anggota?')" button type="button" class="btn btn-danger" disabled>Hapus Semua Data</a>
+                                <small class="text-danger">PERHATIAN !!! tombol ini digunakan untuk menghapus semua data CALON ANGGOTA yang terdaftar.</small>
+                            </div>
+                        </div>
                     </div>
+
+
+
+
                 </div>
+
             </div>
 
 

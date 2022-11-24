@@ -1,4 +1,7 @@
 <?php
+
+use SebastianBergmann\Type\FalseType;
+
 defined('BASEPATH') or exit('No direct script access allowed');
 
 class Settings extends CI_Controller
@@ -38,9 +41,52 @@ class Settings extends CI_Controller
 
     public function backup_database()
     {
+        $this->load->dbutil();
+        // load dbase utility ci3
+
+        $db_name = 'backup-db-.' . $this->db->database . '-on' . date("Y-m-d-H-i-s") . '.zip';
+
+
+        $prefs = array(
+            'format' => 'zip',
+            'filename' => $db_name,
+            'add_insert' => TRUE,
+            'foreign_key_checks' => FALSE,
+
+        );
+
+        // siapkan backup untuk proses download file
+        $backup =  $this->dbutil->backup($prefs);
+        // set lokasi buat download file
+        $save = 'pathtobkfolder/' . $db_name;
+
+        // buat filenya
+        $this->load->helper('file');
+        write_file($save, $backup);
+
+        // download filenya
+        $this->load->helper('download');
+        force_download($db_name, $backup);
+
+
+
+        // echo "ini fitur backup database";
     }
     public function hapus_seluruh_data_ca()
     {
+        // query untuk menghapus semua data calon anggota
+
+        $this->db->query("DELETE FROM data_ca WHERE pengguna_level='CALON_ANGGOTA'");
+        // kotak konfirmasi javascript untuk pemberitahuan bahawa data calon anggota telah dihapus.
+        echo "
+        
+        <script>
+        
+        alert('Data Calon Anggota telah terhapus sepenuhnya.')
+        history.back()
+        
+        </script>
+        ";
     }
 }
 
