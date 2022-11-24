@@ -26,6 +26,7 @@ Tech Stack
 - Bootstrap 5.x
 - DomPDF
 - JQuery
+- Google recaptcha
 
 on this web apps have 3 role model such WTO_ADMIN, WTO_VIEW, and CALON_ANGGOTA. here is a description at each role in below.
 
