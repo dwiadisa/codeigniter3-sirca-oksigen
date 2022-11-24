@@ -35,7 +35,9 @@ The Role Description
 
 - WTO_ADMIN
 this role can add, edit and delete the user account, member candidate data and account of member candidate. Then, this role can config this apps such activate form for member candidate, backup .sql file and remove all member candidate data.
+
 - WTO_VIEW
 this role can add, edit and delete member candidate data but can't use setting function.
+
 - CALON_ANGGOTA
 this role can fill the form the member candidate form. but can't use WTO_ADMIN and WTO_VIEW function.
