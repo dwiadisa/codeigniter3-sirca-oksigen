@@ -77,7 +77,7 @@ class Settings extends CI_Controller
         // query untuk menghapus semua data calon anggota
 
         $this->db->query("DELETE FROM data_ca WHERE pengguna_level='CALON_ANGGOTA'");
-        // kotak konfirmasi javascript untuk pemberitahuan bahawa data calon anggota telah dihapus.
+        // kotak konfirmasi javascript untuk pemberitahuan bahwa data calon anggota telah dihapus.
         echo "
         
         <script>

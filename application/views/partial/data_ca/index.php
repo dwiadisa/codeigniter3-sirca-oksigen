@@ -92,7 +92,7 @@
                                     <a href="<?php echo base_url() . 'data_ca/lihat_ca/' . $p->id_ca;  ?>" class="btn btn-info btn-sm"> <i class="fa fa-eye"></i> </a>
                                     <a href="<?php echo base_url() . 'data_ca/print_form_ca/' . $p->id_ca;  ?>" class="btn btn-warning btn-sm"> <i class="fa fa-download"></i> </a>
                                     <a href="<?php echo base_url() . 'data_ca/ubah_ca/' . $p->id_ca;   ?>" class="btn btn-success btn-sm"> <i class="fa fa-pen"></i> </a>
-                                    <a href="<?php echo base_url() . 'data_ca/hapus_ca/' . $p->id_ca;  ?>" class="btn btn-danger btn-sm"> <i class="fa fa-trash"></i> </a>
+                                    <a href="javascript:void(0);" onclick="hapus(<?php echo  $p->id_ca; ?>);" class="btn btn-danger btn-sm"> <i class="fa fa-trash"></i> </a>
                                 </td>
 
 
@@ -110,6 +110,27 @@
             </div>
         </div>
     </section>
+
+    <!-- kotak konfirmasi untuk hapus ca -->
+
+
+    <script type="text/javascript">
+        var url = "<?php echo base_url(); ?>";
+
+        function hapus(id) {
+            var r = confirm("Apakah Anda yakin menghapus Data Calon Anggota Ini?")
+            if (r == true)
+                window.location = url + "data_ca/hapus_ca/" + id;
+            else
+                return false;
+        }
+    </script>
+
+
+
+
+
+    <!-- kotak konfirmasi untuk hapus ca -->
 
 
 </main><!-- End #main -->
