@@ -110,7 +110,7 @@
                         if ($this->session->userdata('level') !== "CALON_ANGGOTA") { ?>
                             <hr class="dropdown-divider">
                             <li>
-                                <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                                <a class="dropdown-item d-flex align-items-center" href="<?php echo base_url('Profile'); ?>">
                                     <i class="bi bi-person"></i>
                                     <span>My Profile</span>
                                 </a>
@@ -235,7 +235,15 @@
                         <span>Ekspor Data Calon Anggota</span>
                     </a>
                 </li>
+                <li class="nav-heading">Setting Akun</li>
 
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="<?php echo base_url('Profile'); ?>">
+                        <i class="bi bi-person-badge-fill"></i>
+                        <span>My Profile</span>
+                    </a>
+                </li><!-- End Blank Page Nav -->
 
             <?php } ?>
 
@@ -302,17 +310,18 @@
                         <span>Setting Aplikasi</span>
                     </a>
                 </li><!-- End Blank Page Nav -->
+                <li class="nav-heading">Setting Akun</li>
+
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="<?php echo base_url('Profile'); ?>">
+                        <i class="bi bi-person-badge-fill"></i>
+                        <span>My Profile</span>
+                    </a>
+                </li><!-- End Blank Page Nav -->
 
             <?php } ?>
-            <li class="nav-heading">Setting Akun</li>
 
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="pages-blank.html">
-                    <i class="bi bi-person-badge-fill"></i>
-                    <span>My Profile</span>
-                </a>
-            </li><!-- End Blank Page Nav -->
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="<?php echo base_url('about'); ?>">

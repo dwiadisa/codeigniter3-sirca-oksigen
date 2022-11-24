@@ -9,6 +9,7 @@ class Data_user extends CI_Controller
     {
         parent::__construct();
         // cek session login
+
         // jika ketahuan gak login akan redirect ke halaman auth
         if (!is_login()) redirect('auth?alert=belum_login');
 

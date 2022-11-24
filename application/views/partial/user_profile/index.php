@@ -1,18 +1,18 @@
 <main id="main" class="main">
 
     <div class="pagetitle">
-        <h1>Edit User</h1>
+        <h1>My Profile</h1>
 
     </div><!-- End Page Title -->
 
     <section class="section">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Formulir Edit User</h5>
+                <h5 class="card-title">Data Profil User</h5>
 
                 <!-- Vertical Form -->
                 <?php foreach ($pengguna as $p) { ?>
-                    <?php echo form_open_multipart('data_user/data_user_update'); ?>
+                    <?php echo form_open_multipart('Profile/update_profile'); ?>
 
 
 
@@ -64,41 +64,6 @@
                         <small> Kosongkan jika tidak merubah password</small>
                     </div>
                     <div class="col-12">
-                        <label for="inputAddress" class="form-label">Hak Akses</label>
-                        <select class="form-select" aria-label="Default select example" name="level">
-                            <option value="">- Pilih Level -</option>
-                            <option <?php if ($p->pengguna_level == "WTO_ADMIN") {
-                                        echo "selected='selected'";
-                                    } ?> value="WTO_ADMIN">WTO_ADMIN</option>
-                            <option <?php if ($p->pengguna_level == "WTO_VIEW") {
-                                        echo "selected='selected'";
-                                    } ?> value="WTO_VIEW">WTO_VIEW</option>
-                            <option <?php if ($p->pengguna_level == "KEANGGOTAAN") {
-                                        echo "selected='selected'";
-                                    } ?> value="KEANGGOTAAN">KEANGGOTAAN</option>
-                            <small class="text-danger"><?php echo
-                                                        form_error('level'); ?></small>
-
-                        </select>
-                        </select>
-                        <div class="col-12">
-                            <label for="inputAddress" class="form-label">Status Aktif</label>
-                            <select class="form-select" aria-label="Default select example" name="status">
-                                <option value="">- Pilih Status -</option>
-                                <option <?php if ($p->pengguna_status == "1") {
-                                            echo "selected='selected'";
-                                        } ?> value="1">Aktif</option>
-                                <option <?php if ($p->pengguna_status == "0") {
-                                            echo "selected='selected'";
-                                        } ?> value="0">Non-Aktif</option>
-                                <small class="text-danger">
-
-                                    <?php echo
-                                    form_error('status'); ?>
-                                </small>
-
-                            </select>
-                        </div>
 
                         <div class="row mb-3">
                             <label for="inputNumber" class="form-label">File Upload</label>
