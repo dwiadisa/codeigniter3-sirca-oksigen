@@ -28,7 +28,7 @@ Tech Stack
 - JQuery
 - Google recaptcha
 
-on this web apps have 3 role model such WTO_ADMIN, WTO_VIEW, and CALON_ANGGOTA. here is a description at each role in below.
+on this web apps have 3 roles model such WTO_ADMIN, WTO_VIEW, and CALON_ANGGOTA. here is a description at each roles in below.
 
 *******************
 The Role Description
