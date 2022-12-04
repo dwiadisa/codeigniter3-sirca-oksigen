@@ -19,6 +19,8 @@ class Data_prodi extends CI_Controller
 
 
         // load access block model untuk membatasi user
+        // load untuk security
+        $this->load->helper('security');
     }
 
     public function index()
@@ -52,7 +54,7 @@ class Data_prodi extends CI_Controller
                 'nama_prodi' => $nama_prodi,
                 'fakultas' => $fakultas
             );
-
+             $data = $this->security->xss_clean($data);
             $this->m_data->insert_data($data, 'data_prodi');
             redirect(base_url() . 'data_prodi');
         } else {
@@ -98,6 +100,7 @@ class Data_prodi extends CI_Controller
                 'nama_prodi' =>  $nama_prodi,
 
             );
+              $data = $this->security->xss_clean($data);
             $this->m_data->update_data($where, $data, 'data_prodi');
             redirect(base_url() . 'data_prodi');
         } else {

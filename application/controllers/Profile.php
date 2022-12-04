@@ -20,6 +20,8 @@ class Profile extends CI_Controller
 
 
         // load access block model untuk membatasi user
+        // load security
+        $this->load->helper('security');
     }
 
     public function index()
@@ -108,6 +110,7 @@ class Profile extends CI_Controller
                     'pengguna_foto' => $foto_diri,
                 );
             }
+            $data = $this->security->xss_clean($data);
             $where = array(
                 'id_pengguna' => $this->session->userdata('id')
             );

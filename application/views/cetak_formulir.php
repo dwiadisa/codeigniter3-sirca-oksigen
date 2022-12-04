@@ -34,7 +34,11 @@
         <header class="tnr">
             Formulir Pendaftaran Calon Anggota <br> </header>
         <div class="tnr">UKM TEATER OKSIGEN <br>
-            Tahun 2020/2021<br>
+        <?php
+        $tahun = date("Y");
+$tahun_berikut = (int)$tahun;
+         ?>
+            Tahun <?php echo $tahun;?> / <?php echo $tahun_berikut + 1;?><br>
 
             Universitas Muhammadiyah Jember<br>
         </div> <br>

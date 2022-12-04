@@ -28,8 +28,8 @@ class Data_ca extends CI_Controller
 
         // load hak akses model
 
-
-
+        // load security
+        $this->load->helper('security');
 
     }
 
@@ -217,6 +217,7 @@ class Data_ca extends CI_Controller
                 'tahun_submit' => date("Y"),
 
             );
+            $data = $this->security->xss_clean($data);
             $this->m_data->insert_data($data, 'data_ca');
             redirect(base_url() . 'data_ca');
 
@@ -475,6 +476,7 @@ class Data_ca extends CI_Controller
                     'tahun_submit' => date("Y"),
                 );
             }
+              $data = $this->security->xss_clean($data);
             $where = array(
                 'id_ca' => $id
             );

@@ -37,10 +37,30 @@
                         <div class="row">
                             <div class="col-lg-3 col-md-4 label "><b> Nomor Induk Mahasiswa</b> </div>
                             <div class="col-lg-9 col-md-8"><?php echo $ca->nim; ?></div>
-                        </div>
+       
+                 </div>
+                 <?php
+
+  $fakultas_query = $this->db->query("SELECT nama_fakultas FROM data_fakultas WHERE id_fakultas=$ca->fakultas LIMIT 1")->result();
+        $prodi_query = $this->db->query("SELECT nama_prodi FROM data_prodi WHERE id_prodi=$ca->prodi LIMIT 1")->result();
+
+        ?>
+        <?php
+                            foreach ($fakultas_query as $faq) {
+                                $nama_fak = $faq->nama_fakultas;
+                            }
+
+                            foreach ($prodi_query as $pdq) {
+                                $nama_prodi = $pdq->nama_prodi;
+                            }
+
+                          
+?>
+
+                        
                         <div class="row">
                             <div class="col-lg-3 col-md-4 label "><b> Fakultas / Prodi</b> </div>
-                            <div class="col-lg-9 col-md-8"><?php echo $ca->fakultas . "/" . $ca->prodi; ?></div>
+                            <div class="col-lg-9 col-md-8"><?php echo $nama_fak . " / " . $nama_prodi; ?></div>
                         </div>
                         <div class="row">
                             <div class="col-lg-3 col-md-4 label "><b> Jenis Kelamin</b> </div>

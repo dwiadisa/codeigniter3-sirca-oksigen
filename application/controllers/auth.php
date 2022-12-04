@@ -15,6 +15,8 @@ class Auth extends CI_Controller
         // jika ketahuan gak login akan redirect ke halaman auth
 
         $this->load->model('M_data');
+        // load security
+        $this->load->helper('security');
     }
 
 
@@ -176,6 +178,7 @@ class Auth extends CI_Controller
             // var_dump($recaptcha);
             // var_dump($response);
             // var_dump($data);
+            $data = $this->security->xss_clean($data);
 
             $this->M_data->insert_data($data, 'data_ca');
 

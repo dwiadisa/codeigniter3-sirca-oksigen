@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => '',
-	'database' => 'sirca_o2',
+	'hostname' => 'sql107.epizy.com',
+	'username' => 'epiz_33007080',
+	'password' => 'SsWbNz06qzI',
+	'database' => 'epiz_33007080_sirca_oksigen',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

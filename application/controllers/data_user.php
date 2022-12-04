@@ -19,8 +19,9 @@ class Data_user extends CI_Controller
         $this->load->model('Access_block_model');
         $this->Access_block_model->admin();
 
-
         // load access block model untuk membatasi user
+        // load security
+        $this->load->helper('security');
     }
 
 
@@ -70,6 +71,7 @@ class Data_user extends CI_Controller
                 'pengguna_status' => $status,
                 'pengguna_foto' => "null_foto.jpg",
             );
+            $data = $this->security->xss_clean($data);
             $this->m_data->insert_data($data, 'pengguna');
 
             redirect(base_url() . 'data_user');
@@ -168,6 +170,7 @@ class Data_user extends CI_Controller
                     'pengguna_foto' => $foto_diri,
                 );
             }
+              $data = $this->security->xss_clean($data);
             $where = array(
                 'id_pengguna' => $id
             );

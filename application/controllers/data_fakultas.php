@@ -18,6 +18,8 @@ class Data_fakultas extends CI_Controller
 
 
         // load access block model untuk membatasi user
+        // load security
+        $this->load->helper('security');
     }
 
     public function index()
@@ -46,6 +48,7 @@ class Data_fakultas extends CI_Controller
                 'nama_fakultas' => $nama_fakultas
 
             );
+              $data = $this->security->xss_clean($data);
             $this->m_data->insert_data($data, 'data_fakultas');
             redirect(base_url() . 'data_fakultas');
         } else {
@@ -91,6 +94,7 @@ class Data_fakultas extends CI_Controller
                 'nama_fakultas' => $nama_fakultas,
 
             );
+              $data = $this->security->xss_clean($data);
             $this->m_data->update_data($where, $data, 'data_fakultas');
             redirect(base_url() . 'data_fakultas');
         } else {
