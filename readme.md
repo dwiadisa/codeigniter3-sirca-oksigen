@@ -18,7 +18,7 @@ Application for recruiting member candidate for "UKM Teater Oksigen UMJ".
 *******************
 About "UKM TEATER OKSIGEN UMJ" 
 *******************
-UKM Teater Oksigen UMJ is an Art Student Activity Unit Organization at Muhammadiyah University of Jember. this unit established at 1 july 2009 . he has 4 division such theatre, fine arts, dance and cinematography. 
+UKM Teater Oksigen UMJ also known as ("Olah Kreasi Grup Seni") is an Art Student Activity Unit Organization at Muhammadiyah University of Jember. this unit established at 1 july 2009 . he has 4 division such theatre, fine arts, dance and cinematography. 
 
 *******************
 Tech Stack 
