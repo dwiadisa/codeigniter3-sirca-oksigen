@@ -61,16 +61,23 @@ class Data_ca extends CI_Controller
     public function tambah_ca_aksi()
     {
         // form validation untuk data autentifikasi
-        $this->form_validation->set_rules('username', 'User name', 'required|is_unique[data_ca.pengguna_username]');
-        $this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[data_ca.pengguna_email]');
-        $this->form_validation->set_rules('password', 'Password', 'required');
+        $this->form_validation->set_rules('username', 'User name', 'required|is_unique[data_ca.pengguna_username]' , array('required' => 'Username harus diisi' ,
+                                                                                                                            'is_unique[data_ca.pengguna_username]'=> 'username ini telah digunakan'
+    
+    ));
+        $this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[data_ca.pengguna_email]', array('required' => 'Email harus diisi',
+                                                                                                                                'valid_email' => 'Penulisan Email anda salah',
+                                                                                                                               'is_unique[data_ca.pengguna_email]'=> 'Email ini telah digunakan' ));
+        $this->form_validation->set_rules('password', 'Password', 'required' ,  array('required' => 'Password harus diisi' , ));
         //   form validation untuk formulir pendaftaran
-        $this->form_validation->set_rules('nama', 'Nama', 'required');
-        $this->form_validation->set_rules('nim', 'NIM', 'required|is_unique[data_ca.nim]', 'integer');
-        $this->form_validation->set_rules('fakultas', 'Fakultas', 'required');
-        $this->form_validation->set_rules('prodi', 'Prodi', 'required');
-        $this->form_validation->set_rules('jenis_kelamin', 'Jenis Kelamin', 'required');
-        $this->form_validation->set_rules('tempat_lahir', 'Tempat Lahir', 'required');
+        $this->form_validation->set_rules('nama', 'Nama', 'required', array('required' => 'Nama Harus Diisi'));
+        $this->form_validation->set_rules('nim', 'NIM', 'required|is_unique[data_ca.nim]|integer', array('required' => 'NIM Harus Diisi!',
+                                                                                                         'is_unique[data_ca.nim]' => 'NIM ini telah digunakan'
+                                                                                                        'integer' => 'NIM harus berupa Angka'));
+        $this->form_validation->set_rules('fakultas', 'Fakultas', 'required', array('required' =>'Kolom Fakultas Harus dipilih', ));
+        $this->form_validation->set_rules('prodi', 'Prodi', 'required', array('required' =>'Kolom Prodi Harus dipilih', ));
+        $this->form_validation->set_rules('jenis_kelamin', 'Jenis Kelamin', 'required', array('required' =>'Kolom Jenis Kelamin Harus dipilih', ));
+        $this->form_validation->set_rules('tempat_lahir', 'Tempat Lahir', 'required', array('required' => 'Tempat Lahir harus diisi'));
         $this->form_validation->set_rules('tanggal_lahir', 'Tempat Lahir', 'required');
         $this->form_validation->set_rules('alamat_rumah', 'Alamat Rumah', 'required');
         $this->form_validation->set_rules('alamat_kost', 'Alamat Kost');
