@@ -78,7 +78,7 @@ class Data_ca extends CI_Controller
         $this->form_validation->set_rules('prodi', 'Prodi', 'required', array('required' =>'Kolom Prodi Harus dipilih', ));
         $this->form_validation->set_rules('jenis_kelamin', 'Jenis Kelamin', 'required', array('required' =>'Kolom Jenis Kelamin Harus dipilih', ));
         $this->form_validation->set_rules('tempat_lahir', 'Tempat Lahir', 'required', array('required' => 'Tempat Lahir harus diisi'));
-        $this->form_validation->set_rules('tanggal_lahir', 'Tempat Lahir', 'required');
+        $this->form_validation->set_rules('tanggal_lahir', 'Tempat Lahir', 'required', array('required' => 'Tanggal Lahir harus diisi'));
         $this->form_validation->set_rules('alamat_rumah', 'Alamat Rumah', 'required');
         $this->form_validation->set_rules('alamat_kost', 'Alamat Kost');
 
