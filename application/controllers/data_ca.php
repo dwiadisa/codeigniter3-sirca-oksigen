@@ -79,18 +79,20 @@ class Data_ca extends CI_Controller
         $this->form_validation->set_rules('jenis_kelamin', 'Jenis Kelamin', 'required', array('required' =>'Kolom Jenis Kelamin Harus dipilih', ));
         $this->form_validation->set_rules('tempat_lahir', 'Tempat Lahir', 'required', array('required' => 'Tempat Lahir harus diisi'));
         $this->form_validation->set_rules('tanggal_lahir', 'Tempat Lahir', 'required', array('required' => 'Tanggal Lahir harus diisi'));
-        $this->form_validation->set_rules('alamat_rumah', 'Alamat Rumah', 'required');
+        $this->form_validation->set_rules('alamat_rumah', 'Alamat Rumah', 'required', array('required' => 'Alamat Rumah Harus Diisi'));
         $this->form_validation->set_rules('alamat_kost', 'Alamat Kost');
 
         $this->form_validation->set_rules('instagram', 'Instagram');
-        $this->form_validation->set_rules('no_hp', 'Nomor HP', 'required', 'integer');
+        $this->form_validation->set_rules('no_hp', 'Nomor HP', 'required|integer',  array('required' => 'No HP Harus Diisi',
+                                                                                            'integer' => 'No HP harus berupa Angka'
+                                                                                        ));
         $this->form_validation->set_rules('hobi', 'Hobi');
         // $this->form_validation->set_rules('hobi', 'Hobi');
         // form validation untuk kolom divisi
         // untuk pemilihan subdivisi berada di perintah $this->input-post dikarenakan berupa form checkbox
         // form validation untuk kolom divisi
-        $this->form_validation->set_rules('alasan', 'Alasan', 'required');
-        $this->form_validation->set_rules('riwayat_organisasi', 'Alasan', 'required');
+        $this->form_validation->set_rules('alasan', 'Alasan', 'required', array('required' => 'Alasan Harus diisi'));
+        $this->form_validation->set_rules('riwayat_organisasi', 'Riwayat Organisasi', 'required', array('required' => 'Riwayat Organisasi Harus Diisi' , ););
         // validasi untuk foto
 
         if (empty($_FILES['foto_diri']['name'])) {
